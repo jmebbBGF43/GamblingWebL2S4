@@ -11,8 +11,8 @@
             <span class="text-xs text-white-400 uppercase tracking-widest font-semibold">: Crédit</span>
         </div>
 
-        <button class="btn btn-primary rounded-xl font-bold border-none bg-[#1576e2] text-white">
+        <a href="index.php?url=login" class="btn btn-primary rounded-xl font-bold border-none bg-[#1576e2] text-white">
             MON COMPTE
-        </button>
+        </a>
     </div>
 </header>
