@@ -6,12 +6,12 @@
     </div>
 
     <div class="flex items-center gap-6">
-        <div class="bg-[#1576e2] border border-white/10 px-4 py-2 rounded-xl flex items-center gap-2">
+        <div class="bg-[#1576e2] border border-white/10 px-4 py-2 rounded flex items-center gap-2">
             <span class="text-grey-400 font-bold">42</span>
             <span class="text-xs text-white-400 uppercase tracking-widest font-semibold">: Crédit</span>
         </div>
 
-        <a href="index.php?url=login" class="btn btn-primary rounded-xl font-bold border-none bg-[#1576e2] text-white">
+        <a href="index.php?url=login" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white">
             MON COMPTE
         </a>
     </div>
