@@ -1,4 +1,4 @@
-<footer class="w-full py-6 px-8 bg-[#0f212d] border-t border-white/5">
+<footer class="w-full py-6 px-8 bg-[#0f212e] border-t border-white/5">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="text-gray-500 text-xs">
             &copy; 2026 <span class="text-blue-500 font-bold">GAMBLING.IO</span>. Jouer ne comporte pas de risques.
