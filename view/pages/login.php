@@ -12,7 +12,7 @@
             </div>
             <hr>
             <div class="gap-2 flex flex-col">
-                <a href="index.php" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white">
+                <a href="../index.php" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white">
                     Connection
                 </a>
                 <p>
@@ -22,7 +22,7 @@
         </div>
         <p>
             Toujours pas de compte ?
-            <a href="index.php?url=register" class="font-bold border-none text-[#1576e2]">
+            <a href="Cregister.php" class="font-bold border-none text-[#1576e2]">
                 Crée un compte
             </a>
         </p>

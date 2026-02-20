@@ -14,7 +14,7 @@
             <input type="password" placeholder="Confirmation mot de passe" class="w-full p-2 rounded bg-white text-black""/>
         </div>
         <hr>
-        <a href="index.php" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white">
+        <a href="../index.php" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white">
             Crée compte
         </a>
     </div>
