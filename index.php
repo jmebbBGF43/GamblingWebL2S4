@@ -16,7 +16,12 @@ if (file_exists($chemin)) {
 }
 
 $content = ob_get_clean();
+if (isset($_GET['url']) and ($_GET['url'] === 'login' or $_GET['url'] === 'register')) {
+    include "view/layout_reglog.php";
+}
 
-include "view/layout.php";
+else {
+    include "view/layout.php";
+}
 
 ?>
