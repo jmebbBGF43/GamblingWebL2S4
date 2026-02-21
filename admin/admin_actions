@@ -1,0 +1,16 @@
+Liste des actions qu'un administrateur pourra faire :
+- gestions des utilisateur :
+    - modifié :
+        - nom du compte
+        - crédit sur le compte
+    - supprimé / ajouté un utilisateur
+    - restriction d'accés :
+        - interdiction de retrais / ajouts de crédits
+        - interdictions de jouer au jeu
+        - bannissement
+
+- gestions dex jeux :
+    - modifications des probabilité pour certains jeux
+    - ajouts de nouveau jeux
+    - retrait de nouveau jeux
+    - bloquage de certains jeux

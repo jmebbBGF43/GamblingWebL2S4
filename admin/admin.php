@@ -1,0 +1,7 @@
+<?php
+
+ob_start();
+include 'view/pages/home.php';
+$content = ob_get_clean();
+
+include "view/layout/layout.php";
