@@ -8,7 +8,12 @@
 </head>
 <body class="bg-[#0f212e] min-h-screen flex flex-col">
     <main class="flex-1 flex items-center justify-center bg-gradient-to-b from-[#1a2c38] to-[#0f212e] p-4">
-        <?php include '../view/pages/'.$url.'.php'; ?>
+        <?php
+        /**
+         * @var $url
+         */
+        include '../view/pages/'.$url.'.php';
+        ?>
     </main>
 </body>
 </html>

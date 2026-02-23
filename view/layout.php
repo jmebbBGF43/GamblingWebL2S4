@@ -11,7 +11,12 @@
     <div class="flex flex-1 gap-4">
         <?php include 'view/common/_nav.php'; ?>
         <main class="flex-1 bg-gradient-to-b from-[#1a2c38] to-[#0f212e] p-4">
-            <?php echo $content; ?>
+            <?php
+            /**
+             * @var $content
+             */
+            echo $content;
+            ?>
         </main>
     </div>
     <?php include 'view/common/_footer.php'; ?>
