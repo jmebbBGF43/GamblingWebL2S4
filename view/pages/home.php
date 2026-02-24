@@ -11,7 +11,7 @@
          */
         foreach ($game_list as $game => $value) : ?>
             <a href="Controller/Cgame.php/<?= $game ?>" class="w-40 h-60 flex items-center justify-center border border-white/10 rounded hover:scale-105 transition-transform cursor-pointer">
-                <?= htmlspecialchars($value) ?>
+                <img src="view/images/game/<?= $game ?>.jpg" alt="<?= htmlspecialchars($value) ?>" class="w-full h-full object-cover">
             </a>
         <?php endforeach; ?>
     </div>
