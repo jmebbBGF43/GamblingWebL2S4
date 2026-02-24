@@ -1,4 +1,4 @@
-<?php include "configuration/temp_game.php"; ?>
+<?php include ROOT_DIR . "configuration/temp_game.php"; ?>
 <div class="flex w-full text-bold text-3xl font-bold h-20 border-b border-white/5 pt-3">
     Sélection des jeux :
 </div>
@@ -10,7 +10,7 @@
          * @var array $game_list
          */
         foreach ($game_list as $game => $value) : ?>
-            <a href="#" class="w-40 h-60 flex items-center justify-center border border-white/10 rounded hover:scale-105 transition-transform cursor-pointer">
+            <a href="Controller/Cgame.php/<?= $game ?>" class="w-40 h-60 flex items-center justify-center border border-white/10 rounded hover:scale-105 transition-transform cursor-pointer">
                 <?= htmlspecialchars($value) ?>
             </a>
         <?php endforeach; ?>
