@@ -22,24 +22,24 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/Cuser.php/profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         👤 Profil
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/Cuser.php/payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         💳 Paiement
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/Cuser.php/parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         ⚙️ Paramètres
                     </a>
                 </li>
                 <div class="h-[1px] bg-white/10 my-1 mx-1"></div>
                 <li>
                     <a href="#" class="text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors rounded py-3">
-                        🚪 Déconnexion
+                        ➜] Déconnexion
                     </a>
                 </li>
             </ul>

@@ -5,13 +5,19 @@
             <p class="text-white text-2xl">S'enregistrer</p>
         </div>
         <div>
-            <input type="text" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black"/>
+            <label for="ID">
+                <input type="text" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black"/>
+            </label>
         </div>
         <div>
-            <input type="password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black""/>
+            <label for="PASSWORD">
+                <input type="password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black""/>
+            </label>
         </div>
         <div>
-            <input type="password" placeholder="Confirmation mot de passe" class="w-full p-2 rounded bg-white text-black""/>
+            <label for="PASSWORD_VERIFICATION">
+                <input type="password" placeholder="Confirmation mot de passe" class="w-full p-2 rounded bg-white text-black""/>
+            </label>
         </div>
         <hr>
         <a href="../index.php" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white">

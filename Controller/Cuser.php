@@ -2,14 +2,14 @@
 require_once "../configuration/config.php";
 
 $path_info = $_SERVER['PATH_INFO'] ?? '/';
-$legalID= trim($path_info, '/');
-$allowed_legal = [
-    "condition", "confidentialite", "support"
+$user_pageID= trim($path_info, '/');
+$allowed_user_page = [
+    "profile", "payment", "parameter"
 ];
 
-if (in_array($legalID, $allowed_legal)) {
+if (in_array($user_pageID, $allowed_user_page)) {
     ob_start();
-    include ROOT_DIR . "view/pages/legal/" . $legalID . ".php";
+    include ROOT_DIR . "view/pages/user/" . $user_pageID . ".php";
     $content = ob_get_clean();
     include ROOT_DIR . "view/layout_header.php";
 

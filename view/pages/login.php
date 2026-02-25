@@ -5,10 +5,15 @@
                 <p class="text-white text-3xl">Se connecter </p>
             </div>
             <div>
-                <input type="text" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black"/>
+                <label for="ID">
+                    <input type="text" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black"/>
+                </label>
             </div>
             <div>
-                <input type="password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black""/>
+                <label for="PASSWORD">
+                    <input type="password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black""/>
+                </label>
+
             </div>
             <hr>
             <div class="gap-2 flex flex-col">

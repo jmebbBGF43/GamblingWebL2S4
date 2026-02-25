@@ -16,6 +16,6 @@ if (in_array($gameId, $allowed_games)) {
     include ROOT_DIR . "view/layout.php";
 
 } else {
-    header("Location: ../index.php");
+    header("Location:" . BASE_URL. "index.php");
     exit();
 }
