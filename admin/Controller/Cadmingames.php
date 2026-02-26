@@ -1,11 +1,10 @@
 <?php
+
 require_once "../../configuration/config.php";
-include ROOT_DIR . "configuration/bdd_temp.php";
+include ROOT_DIR . "configuration/temp_game.php";
 
 ob_start();
-include '../view/pages/adminusers.php';
+include '../view/pages/admingames.php';
 $content = ob_get_clean();
 
 include '../view/layout/layout.php';
-
-
