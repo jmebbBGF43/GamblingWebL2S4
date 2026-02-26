@@ -1,8 +1,7 @@
 <?php
 require_once "../configuration/config.php";
 
-$path_info = $_SERVER['PATH_INFO'] ?? '/';
-$gameId = trim($path_info, '/');
+$gameId = $_GET['game'] ?? '';
 $allowed_games = [
     "pileOuFace", "caseOpening", "slotMachine", "mine",
     "blackJack", "upgrade", "crash", "plinko",

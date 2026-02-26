@@ -9,7 +9,7 @@
          * @var array $game_list
          */
         foreach ($game_list as $game => $value) : ?>
-            <a href="Controller/Cgame.php/<?= $game ?>" class="flex items-center my-3">
+            <a href="Controller/Cgame.php?game=<?= $game ?>" class="flex items-center my-3">
                  <?php include "icon/".$game.".php" ?><?= htmlspecialchars($value) ?>
             </a>
         <?php endforeach; ?>

@@ -1,8 +1,7 @@
 <?php
 require_once "../configuration/config.php";
 
-$path_info = $_SERVER['PATH_INFO'] ?? '/';
-$user_pageID= trim($path_info, '/');
+$user_pageID= $_GET['user_pageID'] ?? '';
 $allowed_user_page = [
     "profile", "payment", "parameter"
 ];

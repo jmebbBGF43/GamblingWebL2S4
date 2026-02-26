@@ -13,7 +13,7 @@
 
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn bg-[#1576e2] hover:bg-blue-600 text-white border-none rounded font-bold px-6">
-                MON COMPTE
+                MENU
             </div>
             <ul tabindex="0" class="dropdown-content  menu p-2 mt-4 bg-[#1a2c38] w-max rounded border border-white/10 text-[#9d9d9d] font-medium">
                 <li>
@@ -22,17 +22,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/Cuser.php/profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/Cuser.php?user_pageID=profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         👤 Profil
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/Cuser.php/payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/Cuser.php?user_pageID=payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         💳 Paiement
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/Cuser.php/parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/Cuser.php?user_pageID=parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         ⚙️ Paramètres
                     </a>
                 </li>

@@ -1,8 +1,7 @@
 <?php
 require_once "../configuration/config.php";
 
-$path_info = $_SERVER['PATH_INFO'] ?? '/';
-$legalID= trim($path_info, '/');
+$legalID= $_GET["legalID"] ?? '';
 $allowed_legal = [
     "condition", "confidentialite", "support"
 ];
