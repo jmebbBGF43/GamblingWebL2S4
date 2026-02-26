@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <title>Admin Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <base href="https://pedago.univ-avignon.fr/~uapv2500805/">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" />
 </head>
-<body class="bg-[#0f212e] min-h-screen flex flex-col text-white">
-<?php include "view/common/_header.php"; ?>
+<body class="bg-[#7AAACE] min-h-screen flex flex-col text-white">
+<?php include __DIR__."/../common/_header.php"; ?>
 <div class="flex flex-1 gap-4">
-    <?php include 'view/common/_nav.php'; ?>
-    <main class="flex-1 bg-gradient-to-b from-[#1a2c38] to-[#0f212e] p-4">
-        <?php echo $content; ?>
+    <?php include __DIR__."/../common/_nav.php"; ?>
+    <main class="flex-1 bg-[#9CD5FF] p-4 border-b border-black/35">
+        <?php
+        /**
+         * @var $content
+         */
+        echo $content;
+        ?>
     </main>
 </div>
 </body>
