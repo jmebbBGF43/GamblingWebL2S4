@@ -69,13 +69,13 @@
             </td>
             </td>
             <td class="grid grid-cols-2 gap-4 m-2">
-                <a href="#" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white hover:text-blue">
+                <a href="admin/Controller/Cadmingames.php?action_game=proba" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white hover:text-blue">
                     Modifier les probas
                 </a>
                 <a href="#" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white hover:text-blue">
                     Supprimer le jeux
                 </a>
-            </td>>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -87,7 +87,7 @@
     Autres actions
 </div>
 
-<a href="#" class="w-fit flex items-center gap-3 px-6 py-5 my-5 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white transition-all shadow-sm">
+<a href="admin/Controller/Cadmingames.php?action_game=addgame" class="w-fit flex items-center gap-3 px-6 py-5 my-5 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white transition-all shadow-sm">
     Ajouter un jeux
 </a>
 

@@ -102,7 +102,7 @@
                 <?= $info['date_inscription'] ?>
             </td>
             <td class="grid grid-cols-2 gap-4 my-2">
-                <a href="#" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white hover:text-blue">
+                <a href="admin/Controller/Cadminusers.php?action_user=edit&id=<?= $user?>" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white hover:text-blue">
                     Modifier
                 </a>
                 <a href="#" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white hover:text-blue">
@@ -125,7 +125,7 @@
 </div>
 
 
-<a href="#" class="w-fit flex items-center gap-3 px-6 py-5 my-5 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white transition-all shadow-sm">
+<a href="admin/Controller/Cadminusers.php?action_user=create" class="w-fit flex items-center gap-3 px-6 py-5 my-5 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white transition-all shadow-sm">
     Ajouter un utilisateur
 </a>
 
