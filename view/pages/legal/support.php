@@ -24,6 +24,17 @@
             <p class="text-white font-bold">Q : Avez-vous un programme VIP ?</p>
             <p class="mt-2 text-sm">R : Bien sûr ! Si vous perdez plus de 50 000€, vous recevrez par la poste un mug avec l'inscription "Pigeon de l'année" ainsi qu'un pin's virtuel sous forme de NFT.</p>
         </div>
+        <br>
+        <h3 class="text-xl font-bold text-white mt-8 mb-2">Envoyez-nous un Mail qu'on ne lira pas :</h3>
+
+        <form class="flex flex-col gap-4">
+            <input type="email" placeholder="votre@email.com" class="w-full p-3 rounded bg-white text-black" />
+            <input type="text" placeholder="Sujet du litige perdu d'avance" class="w-full p-3 rounded bg-white text-black" />
+            <textarea placeholder="Contenu de votre message inutile..." rows="5" class="w-full p-3 h-40 rounded bg-white text-black resize-none"></textarea>
+            <button type="submit" class="w-full py-3 rounded font-bold bg-[#1576e2] hover:bg-blue-600 text-white transition-colors shadow-lg">
+                Envoyer dans le vide
+            </button>
+        </form>
     </div>
 
 </div>
