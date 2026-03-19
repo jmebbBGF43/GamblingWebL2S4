@@ -1,8 +1,8 @@
--- 1. On crée d'abord les types ENUM (une seule fois)
+-- ENUM
 CREATE TYPE user_role AS ENUM ('user', 'admin');
 CREATE TYPE bet_status AS ENUM ('win', 'loss', 'pending', 'refunded');
 
--- 2. Table Users
+-- Table Users
 CREATE TABLE users (
                        id SERIAL PRIMARY KEY,
                        username VARCHAR(50) NOT NULL UNIQUE,
@@ -15,7 +15,7 @@ CREATE TABLE users (
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 3. Table Games
+-- Table Games
 CREATE TABLE games (
                        id SERIAL PRIMARY KEY,
                        slug VARCHAR(50) NOT NULL UNIQUE,
@@ -24,7 +24,7 @@ CREATE TABLE games (
                        probabilities JSONB NULL
 );
 
--- 4. Table Bets
+-- Table Bets
 CREATE TABLE bets (
                       id BIGSERIAL PRIMARY KEY,
                       user_id INT NOT NULL,

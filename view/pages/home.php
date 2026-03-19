@@ -10,7 +10,7 @@
          * @var array $game_list
          */
         foreach ($game_list as $game => $value) : ?>
-            <a href="Controller/Cgame.php?game=<?= $game ?>" class="w-40 h-60 flex items-center justify-center border border-white/10 rounded hover:scale-105 transition-transform cursor-pointer">
+            <a href="Controller/controller_game.php?game=<?= $game ?>" class="w-40 h-60 flex items-center justify-center border border-white/10 rounded hover:scale-105 transition-transform cursor-pointer">
                 <img src="view/images/game/<?= $game ?>.jpg" alt="<?= htmlspecialchars($value) ?>" class="w-full h-full object-cover">
             </a>
         <?php endforeach; ?>

@@ -17,22 +17,22 @@
             </div>
             <ul tabindex="0" class="dropdown-content  menu p-2 mt-4 bg-[#1a2c38] w-max rounded border border-white/10 text-[#9d9d9d] font-medium">
                 <li>
-                    <a href="Controller/Clogin.php" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/controller_login.php" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         🔄 Conection
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/Cuser.php?user_pageID=profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/controller_user.php?user_pageID=profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         👤 Profil
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/Cuser.php?user_pageID=payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/controller_user.php?user_pageID=payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         💳 Paiement
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/Cuser.php?user_pageID=parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/controller_user.php?user_pageID=parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         ⚙️ Paramètres
                     </a>
                 </li>
