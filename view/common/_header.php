@@ -22,17 +22,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/controller_user.php?user_pageID=profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/controller_menu.php?user_pageID=profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         👤 Profil
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/controller_user.php?user_pageID=payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/controller_menu.php?user_pageID=payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         💳 Paiement
                     </a>
                 </li>
                 <li>
-                    <a href="Controller/controller_user.php?user_pageID=parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                    <a href="Controller/controller_menu.php?user_pageID=parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                         ⚙️ Paramètres
                     </a>
                 </li>

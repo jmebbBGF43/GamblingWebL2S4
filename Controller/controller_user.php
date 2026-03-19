@@ -1,18 +1,24 @@
 <?php
+require_once "../model/class/User.php";
 require_once "../configuration/config.php";
 
-$user_pageID= $_GET['user_pageID'] ?? '';
-$allowed_user_page = [
-    "profile", "payment", "parameter"
-];
+if (isset($_POST['confirmpassword'])) {
+    $confirmpassword = $_POST['confirmpassword'];
+}
+if (isset($_POST['password'])) {
+    $password = $_POST['password'];
+}
+if (isset($_POST['username'])) {
+    $username = $_POST['username'];
+}
 
-if (in_array($user_pageID, $allowed_user_page)) {
-    ob_start();
-    include ROOT_DIR . "view/pages/user/" . $user_pageID . ".php";
-    $content = ob_get_clean();
-    include ROOT_DIR . "view/layout_header.php";
-
-} else {
-    header("Location:" . BASE_URL. "index.php");
-    exit();
+try {
+    if ($password != $confirmpassword) {
+        throw new Exception("Les mots de passe ne correspondent pas");
+    } else {
+        $user = new User($username, $password);
+    }
+}
+catch (Exception $e) {
+    echo $e->getMessage();
 }
