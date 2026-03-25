@@ -1,0 +1,27 @@
+<?php
+
+namespace Model\DB;
+
+class ConfigurationDB1
+{
+    private string $host = 'host';
+    private string $port = 'port';
+    private string $database = 'dbName';
+    private string $username = 'username';
+    private string $password = 'mdp';
+
+    public function getDNS(): string
+    {
+        return "pgsql:{$this->host};dbname={$this->database};port={$this->port};";
+    }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+}
