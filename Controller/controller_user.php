@@ -4,10 +4,10 @@ use Model\ConnexionDB;
 use Model\Entity\User;
 use Model\Entity\UserDB;
 
+require_once "../Model/ConfigurationDB.php";
 require_once "../Model/ConnexionDB.php";
 require_once "../Model/Class/User.php";
 require_once "../Model/Class/UserDB.php";
-require_once "../Model/ConnexionDB.php";
 
 
 if (isset($_POST['confirmpassword'])) {
