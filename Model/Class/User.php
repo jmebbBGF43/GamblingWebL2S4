@@ -2,15 +2,15 @@
 
 namespace Model\Entity\user;
 class User {
-    private $id;
-    private $username;
-    private $password;
-    private $credits;
-    private $role;
-    private $is_banned;
-    private $can_play;
-    private $can_transact;
-    private $created_at;
+    private int $id;
+    private string $username;
+    private string $password;
+    private int $credits;
+    private string $role;
+    private bool $is_banned;
+    private bool $can_play;
+    private bool $can_transact;
+    private string $created_at;
 
     public function __construct($username, $password) {
         $this->username = $username;
@@ -27,11 +27,13 @@ class User {
         return "[" . $this->username."|".$this->role."]";
     }
 
-    public function getId(){
+    public function getId(): int
+    {
         return $this->id;
     }
 
-    public function getCredits(){
+    public function getCredits(): int
+    {
         return $this->credits;
     }
 
@@ -40,10 +42,6 @@ class User {
     }
 
     public function subCredits($number){
-        if ($this->credits - $number < 0)
-        {
-            return;
-        }
-        $this->credits += $number;
+        $this->credits -= $number;
     }
 }
