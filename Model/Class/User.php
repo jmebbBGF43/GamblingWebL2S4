@@ -1,22 +1,22 @@
 <?php
 
-namespace Model\Entity\user;
+namespace Model\Entity;
 class User {
     private int $id;
     private string $username;
     private string $password;
-    private int $credits;
+    private float $credits;
     private string $role;
     private bool $is_banned;
     private bool $can_play;
     private bool $can_transact;
     private string $created_at;
 
-    public function __construct($username, $password) {
+    public function __construct($username, $passwordHash, $credits = 0, $role = 'user') {
         $this->username = $username;
-        $this->password = $password;
-        $this->credits = 0;
-        $this->role='user';
+        $this->password = $passwordHash;
+        $this->credits = $credits;
+        $this->role = $role;
         $this->is_banned = false;
         $this->can_play = true;
         $this->can_transact = true;
@@ -41,7 +41,14 @@ class User {
         $this->credits += $number;
     }
 
-    public function subCredits($number){
-        $this->credits -= $number;
+    public function subCredits(float $number) {
+        if ($this->credits >= $number) {
+            $this->credits -= $number;
+        }
+    }
+
+    public function verifyPassword(string $passwordClair): bool
+    {
+        return password_verify($passwordClair, $this->password);
     }
 }

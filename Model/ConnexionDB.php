@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\ConnexionDB;
+namespace Model;
 use Model\ConfigurationDB;
 use \PDO;
 use \PDOException;
