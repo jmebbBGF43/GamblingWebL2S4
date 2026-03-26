@@ -1,8 +1,8 @@
 <?php
 
-namespace Model\DB;
+namespace Model;
 
-class ConfigurationDB1
+class ConfigurationDB
 {
     private string $host = 'host';
     private string $port = 'port';
