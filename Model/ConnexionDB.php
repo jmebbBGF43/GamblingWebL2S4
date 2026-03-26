@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\ConnexionDB;
+namespace Model;
 use Model\ConfigurationDB;
 use \PDO;
 use \PDOException;
@@ -14,7 +14,7 @@ class ConnexionDB {
                 $config->getDNS(),
                 $config->getUsername(),
                 $config->getPassword(),
-                [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
+                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
             );
         } catch (PDOException $e) {
             die("Erreur de connexion à la DB : " . $e->getMessage());

@@ -27,7 +27,7 @@
         </div>
         <p>
             Toujours pas de compte ?
-            <a href="Cregister.php" class="font-bold border-none text-[#1576e2]">
+            <a href="controller_register.php" class="font-bold border-none text-[#1576e2]">
                 Crée un compte
             </a>
         </p>
