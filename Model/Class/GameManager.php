@@ -54,4 +54,12 @@ class GameManager
         $sql = "SELECT probabilities FROM games WHERE id = '$id';";
         return $this->db->query($sql)->fetchAll();
     }
+    public function setProbs(int $id, array $probs)
+    {
+        $sql = "UPDATE games SET probabilities = '$probs' WHERE id = '$id';";
+    }
+    public function setActive(int $id, bool $active)
+    {
+        $sql = "UPDATE games SET is_active = '$active' WHERE id = '$id';";
+    }
 }

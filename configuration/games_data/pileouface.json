@@ -1,0 +1,11 @@
+{
+  "PileOuFace": {
+    "MinBet" : 0.1,
+    "MaxBet" : 100000,
+    "Multi" : 2,
+    "Pile" : 45,
+    "Face" : 45
+  }
+}
+
+// {"PileOuFace": {"MinBet" : 0.1, "MaxBet" : 100000, "Multi" : 2, "Pile" : 45, "Face" : 45}}
