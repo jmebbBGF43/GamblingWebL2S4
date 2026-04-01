@@ -32,5 +32,11 @@ abstract class Game {
     public function getSlug(): string {
         return $this->slug;
     }
+    public function getMinBet(): float {
+        return $this->minBet;
+    }
+    public function getMaxBet(): float {
+        return $this->maxBet;
+    }
     abstract public function run(float $betAmount): float;
 }
