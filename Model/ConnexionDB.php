@@ -1,6 +1,7 @@
 <?php
 
 namespace Model;
+require_once __DIR__ . '/ConfigurationDB.php';
 use Model\ConfigurationDB;
 use \PDO;
 use \PDOException;
