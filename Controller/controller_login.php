@@ -1,3 +1,36 @@
 <?php
+
+use Model\ConnexionDB;
+use Model\Entity\User;
+use Model\Entity\UserDB;
+
+
+require_once "../Model/ConfigurationDB.php";
+require_once "../Model/ConnexionDB.php";
+require_once "../Model/Class/User.php";
+require_once "../Model/Class/UserDB.php";
+
 $url = 'login';
 include "../view/layout_reglog.php";
+
+$username = $_POST['login_id'] ?? null;
+$password = $_POST['login_password'] ?? null;
+
+try {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (empty($username) || empty($password)) {
+            throw new Exception("Veuillez remplir tous les champs");
+        }
+
+        $user = new User($username, $password);
+        $userDB = new UserDB();
+
+        $result = $userDB->verifyUser($user);
+        if ($result) {
+            echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Vous etes connecté</p>";
+        } else echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Connection a échouée</p>";
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+

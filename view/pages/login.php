@@ -1,4 +1,4 @@
-<div class="h-full w-full flex items-center justify-center">
+<form action="/~uapv2500805/Controller/controller_login.php" method="POST" class="h-full w-full flex items-center justify-center">
     <div class="flex items-center justify-center flex-col">
         <div class="w-80 flex flex-col gap-6 bg-[#0f212d] rounded-xl p-6">
             <div>
@@ -6,20 +6,20 @@
             </div>
             <div>
                 <label for="ID">
-                    <input type="text" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black"/>
+                    <input type="text" name="login_id" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black"/>
                 </label>
             </div>
             <div>
                 <label for="PASSWORD">
-                    <input type="password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black""/>
+                    <input type="password" name="login_password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black""/>
                 </label>
 
             </div>
             <hr>
             <div class="gap-2 flex flex-col">
-                <a href="../index.php" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white">
-                    Connection
-                </a>
+                <button type="submit" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white py-2 text-center hover:bg-blue-600 transition-colors">
+                    Se connecter
+                </button>
                 <p>
                     Mot de passe oublié ?
                 </p>
@@ -32,4 +32,4 @@
             </a>
         </p>
     </div>
-</div>
+</form>

@@ -1,22 +1,22 @@
-<form action="/~uapv2500805/Controller/controller_user.php" method="POST" class="h-full w-full flex items-center justify-center">
+<form action="/~uapv2500805/Controller/controller_register.php" method="POST" class="h-full w-full flex items-center justify-center">
 
     <div class="w-80 flex flex-col gap-6 bg-[#0f212d] rounded-xl p-6">
         <div>
             <p class="text-white text-2xl">S'enregistrer</p>
         </div>
         <div>
-            <label for="username">
-                <input type="text" id="username" name="username" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black" required />
+            <label for="register_username">
+                <input type="text" id="register_username" name="register_username" placeholder="Identifiant" class="w-full p-2 rounded bg-white text-black" required />
             </label>
         </div>
         <div>
-            <label for="password">
-                <input type="password" id="password" name="password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black" required />
+            <label for="register_password">
+                <input type="password" id="register_password" name="register_password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black" required />
             </label>
         </div>
         <div>
-            <label for="confirmpassword">
-                <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirmation mot de passe" class="w-full p-2 rounded bg-white text-black" required />
+            <label for="register_confirmpassword">
+                <input type="password" id="register_confirmpassword" name="register_confirmpassword" placeholder="Confirmation mot de passe" class="w-full p-2 rounded bg-white text-black" required />
             </label>
         </div>
 
