@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gambling.io</title>
-    <base href="https://pedago.univ-avignon.fr/~uapv2500805/">
+    <base href="https://pedago.univ-avignon.fr/~uapv2500969/">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" />
 </head>

@@ -19,16 +19,19 @@ $password = $_POST['login_password'] ?? null;
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($username) || empty($password)) {
-            throw new Exception("Veuillez remplir tous les champs");
+            throw new Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Veuillez remplir tous les champs</p>");
         }
 
         $user = new User($username, $password);
         $userDB = new UserDB();
 
         $result = $userDB->verifyUser($user);
-        if ($result) {
-            echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Vous etes connecté</p>";
-        } else echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Connection a échouée</p>";
+        if (!$result) {
+            throw new Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Connection a échouée</p>");
+        }
+        echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Vous etes connecté</p>";
+        header('Location: ../index.php');
+        exit();
     }
 } catch (Exception $e) {
     echo $e->getMessage();

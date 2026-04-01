@@ -23,19 +23,19 @@ try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($username) || empty($password)) {
-            throw new Exception("Veuillez remplir tous les champs");
+            throw new Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Veuillez remplir tous les champs</p>");
         }
-
-        // Vérification de la correspondance des mots de passe
         if ($password !== $confirmpassword) {
-            throw new Exception("Les mots de passe ne correspondent pas");
+            throw new Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Les mots de passe ne correspondent pas</p>");
         }
 
-        $user = new User($username, $password);
+        $user = new User($username, password_hash($password, PASSWORD_DEFAULT));
         $userDB = new UserDB();
         $userDB->insertUser($user);
 
         echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Compte créé !</p>";
+        header('Location: ../index.php');
+        exit();
     }
 } catch (Exception $e) {
     echo $e->getMessage();

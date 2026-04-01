@@ -75,8 +75,22 @@ class User {
         return $this->can_transact;
     }
 
-    public function banTransact(){
-        $this->can_transact = false;
+    public function setTransact(bool $bool){
+        $this->can_transact = $bool;
     }
 
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
 }
