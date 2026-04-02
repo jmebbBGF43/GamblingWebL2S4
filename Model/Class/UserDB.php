@@ -12,12 +12,18 @@ class UserDB{
         $this->db= ConnexionDB::getPDO();
     }
 
-    public function insertUser($user){
+    public function insertUser(User $user){
+        $sql = "SELECT * FROM users WHERE username = ?;";
+        $stat = $this->db->prepare($sql);
+        $stat->execute([$user->getUsername()]);
+        $result = $stat->fetch();
+        if($result){
+            throw new \Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Ce nom d'utilisateur est déjà utilisé</p>");
+        }
         $sql = "INSERT INTO users (username, password_hash, credits, role, is_banned, can_play, can_transact, created_at) values(?,?,?,?,?,?,?,?);";
         $stat = $this->db->prepare($sql);
-        $stat->execute([$user->username, $user->password, $user->credits, $user->role, $user->is_banned ? 'true' : 'false', $user->can_play ? 'true' : 'false', $user->can_transact ? 'true' : 'false', $user->created_at]);
+        $stat->execute([$user->getUsername(), $user->getPassword(), $user->getCredits(), $user->getRole(), $user->isBanned() ? 'true' : 'false', $user->canPlay() ? 'true' : 'false', $user->canTransact() ? 'true' : 'false', $user->getCreatedAt()]);
     }
-
     public function updateUser($id, $username, $credits, $role, $is_banned, $can_play, $can_transact) {
         $sql = "UPDATE users SET username=?, credits=?, role=?, is_banned=?, can_play=?, can_transact=? WHERE id=?;";
         $this->db->prepare($sql)->execute([
@@ -29,6 +35,15 @@ class UserDB{
             $can_transact ? 'true' : 'false',
             $id
         ]);
+    }
+
+    public function verifyUser($user): bool
+    {
+        $sql = "SELECT * FROM users WHERE username = ?;";
+        $stat = ($this->db)->prepare($sql);
+        $stat->execute([$user->getUsername()]);
+        $result = $stat->fetch();
+        return $result && password_verify($user->getPassword(), $result['password_hash']);
     }
 
     public function deleteUser($id) {

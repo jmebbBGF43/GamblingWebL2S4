@@ -27,7 +27,7 @@ try {
 
         $result = $userDB->verifyUser($user);
         if (!$result) {
-            throw new Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Connection a échouée</p>");
+            throw new Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Connection a échouée, Username ou Mot de pass incorrecte </p>");
         }
         echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Vous etes connecté</p>";
         header('Location: ../index.php');
