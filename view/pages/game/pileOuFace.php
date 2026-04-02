@@ -7,9 +7,9 @@
         <input type="number" id="betAmount" value="10" min="1" class="w-full h-14 bg-[#0f212e] border border-white/10 rounded-lg text-center text-white font-bold text-2xl">
 
         <div class="flex gap-4 mt-2">
-            <button onclick="playGame('pile')" class="flex-1 bg-blue-600 hover:bg-blue-500 p-3 rounded font-bold transition">Jouer Pile</button>
-            <button onclick="playGame('tranche')" class="flex-1 bg-purple-600 hover:bg-purple-500 p-3 rounded font-bold transition">Jouer Tranche (x4)</button>
-            <button onclick="playGame('face')" class="flex-1 bg-red-600 hover:bg-red-500 p-3 rounded font-bold transition">Jouer Face</button>
+            <button onclick="playGame('pile')" class="flex-1 bg-blue-600 hover:bg-blue-500 p-3 rounded font-bold transition text-white">Jouer Pile</button>
+            <button onclick="playGame('tranche')" class="flex-1 bg-purple-600 hover:bg-purple-500 p-3 rounded font-bold transition text-white">Jouer Tranche (x4)</button>
+            <button onclick="playGame('face')" class="flex-1 bg-red-600 hover:bg-red-500 p-3 rounded font-bold transition text-white">Jouer Face</button>
         </div>
     </div>
 
