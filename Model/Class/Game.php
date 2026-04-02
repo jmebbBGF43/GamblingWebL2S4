@@ -1,7 +1,7 @@
 <?php
 
 namespace Model\Entity;
-abstract class Game {
+abstract class Game implements GameInterface {
     protected int $id;
     protected string $name;
     protected array $config;
@@ -38,5 +38,5 @@ abstract class Game {
     public function getMaxBet(): float {
         return $this->maxBet;
     }
-    abstract public function run(float $betAmount): float;
+    abstract public function run(float $betAmount, string $choice = ''): float;
 }

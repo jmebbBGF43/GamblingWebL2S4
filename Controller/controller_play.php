@@ -3,6 +3,7 @@ require_once "../configuration/config.php";
 require_once ROOT_DIR . "Model/ConnexionDB.php";
 require_once ROOT_DIR . "Model/ConfigurationDB.php";
 require_once ROOT_DIR . "Model/Class/GameManager.php";
+require_once ROOT_DIR . "Model/Class/GameInterface.php";
 require_once ROOT_DIR . "Model/Class/Game.php";
 
 require_once ROOT_DIR . "Model/Class/Games/PileOuFace.php";
