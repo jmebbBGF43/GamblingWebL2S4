@@ -5,9 +5,9 @@ namespace Model\Entity;
 use Model\ConnexionDB;
 use Model\Entity\User;
 use PDO;
-require_once __DIR__ . '/UserDBInterface.php';
+//require_once __DIR__ . '/UserDBInterface.php';
 
-class UserDB implements UserDBInterface{
+class UserDB{
     private $db;
     function __construct(){
         $this->db= ConnexionDB::getPDO();
@@ -40,13 +40,16 @@ class UserDB implements UserDBInterface{
         ]);
     }
 
-    public function verifyUser($user): bool
+    public function verifyUser($user)
     {
         $sql = "SELECT * FROM users WHERE username = ?;";
-        $stat = ($this->db)->prepare($sql);
+        $stat = $this->db->prepare($sql);
         $stat->execute([$user->getUsername()]);
         $result = $stat->fetch();
-        return $result && password_verify($user->getPassword(), $result['password_hash']);
+        if ($result && password_verify($user->getPassword(), $result['password_hash'])) {
+            return $result;
+        }
+        return false;
     }
 
     public function deleteUser($id): void
@@ -64,6 +67,28 @@ class UserDB implements UserDBInterface{
     public function getAllUsers(): array
     {
         return $this->db->query("SELECT * FROM users ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function updateUserCredits($id, $newCredits) {
+        $sql = "UPDATE users SET credits = ? WHERE id = ?;";
+        $this->db->prepare($sql)->execute([$newCredits, $id]);
+    }
+
+    public function logBet($userId, $gameId, $betAmount, $payout) {
+        $status = $payout > 0 ? 'win' : 'loss';
+        $sql = "INSERT INTO bets (user_id, game_id, bet_amount, payout, status) VALUES (?, ?, ?, ?, ?);";
+        $this->db->prepare($sql)->execute([$userId, $gameId, $betAmount, $payout, $status]);
+    }
+
+    public function getTotalProfit($userId) {
+        $sql = "SELECT SUM(payout - bet_amount) as total_profit FROM bets WHERE user_id = ?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$userId]);
+        $result = $stmt->fetch();
+        return $result['total_profit'] ?? 0; // Retourne 0 si le mec n'a jamais joué
+    }
+    public function updatePassword($id, $newPasswordHash) {
+        $sql = "UPDATE users SET password_hash = ? WHERE id = ?;";
+        $this->db->prepare($sql)->execute([$newPasswordHash, $id]);
     }
 }
 

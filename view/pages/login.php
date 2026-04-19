@@ -13,7 +13,11 @@
                 <label for="PASSWORD">
                     <input type="password" name="login_password" placeholder="Mot de passe" class="w-full p-2 rounded bg-white text-black" required />
                 </label>
-
+            </div>
+            <div>
+                <label class="flex items-center gap-2 mt-2">
+                    <input type="checkbox" name="remember_me"> Se souvenir de moi
+                </label>
             </div>
             <hr>
             <div class="gap-2 flex flex-col">

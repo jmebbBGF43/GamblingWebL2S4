@@ -35,15 +35,19 @@
             });
             const data = await response.json();
 
-            if (data.status === 'win') {
-                resultBox.className = "mt-8 p-4 text-center rounded bg-green-600 text-white font-bold text-xl";
-                resultBox.innerText = `Tombé sur ${data.outcome} ! ${data.message} Gain : ${data.payout} €`;
-            } else if (data.status === 'loss') {
-                resultBox.className = "mt-8 p-4 text-center rounded bg-red-600 text-white font-bold text-xl";
-                resultBox.innerText = `Tombé sur ${data.outcome}. ${data.message} -${data.payout} €`;
-            } else {
-                resultBox.className = "mt-8 p-4 text-center rounded bg-orange-500 text-white font-bold";
-                resultBox.innerText = `Erreur : ${data.message}`;
+            if (data.status === 'win' || data.status === 'loss') {
+                const headerBalance = document.getElementById('user-balance');
+                if (headerBalance && data.new_balance !== undefined) {
+                    headerBalance.innerText = parseFloat(data.new_balance).toLocaleString('fr-FR', { minimumFractionDigits: 2 });
+                }
+
+                if (data.status === 'win') {
+                    resultBox.className = "mt-8 p-4 text-center rounded bg-green-600 text-white font-bold text-xl";
+                    resultBox.innerText = `Tombé sur ${data.outcome.toUpperCase()} ! ${data.message} Gain : ${data.payout} €`;
+                } else {
+                    resultBox.className = "mt-8 p-4 text-center rounded bg-red-600 text-white font-bold text-xl";
+                    resultBox.innerText = `Tombé sur ${data.outcome.toUpperCase()}. ${data.message} -${data.payout} €`;
+                }
             }
         } catch (error) {
             console.error("Erreur de connexion avec le serveur", error);
