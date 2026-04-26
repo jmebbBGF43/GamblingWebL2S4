@@ -6,10 +6,12 @@ require_once ROOT_DIR . "Model/Class/GameManager.php";
 require_once ROOT_DIR . "Model/Class/GameInterface.php";
 require_once ROOT_DIR . "Model/Class/Game.php";
 require_once ROOT_DIR . "Model/Class/Games/PileOuFace.php";
+require_once ROOT_DIR . "Model/Class/Games/CaseOpening.php";
 require_once ROOT_DIR . "Model/Class/UserDB.php";
 
 use Model\Entity\GameManager;
 use Model\Entity\Games\PileOuFace;
+use Model\Entity\Games\CaseOpening;
 use Model\Entity\UserDB;
 
 header('Content-Type: application/json');
@@ -60,6 +62,16 @@ try {
 
             $payout = $game->run($bet, $choice);
             $outcome = $game->getOutcome();
+            break;
+        case 'caseOpening':
+            $choice = $request['choice'] ?? '';
+            if (empty($choice)) {
+                throw new \Exception("Veuillez sélectionner une caisse.");
+            }
+            $configArray = is_string($gameData['probabilities']) ? json_decode($gameData['probabilities'], true) : $gameData['probabilities'];
+            $game = new CaseOpening($gameData['id'], $gameData['name'], $configArray, $gameData['is_active'], $gameData['slug'], 1, 10000);
+            $payout = $game->run($bet, $choice);
+            $outcome = $game->getWonRarity();
             break;
         default:
             throw new \Exception("Ce jeu n'est pas encore configuré.");
