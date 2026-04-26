@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_user === 'update') {
         isset($_POST['update_can_play']),
         isset($_POST['update_can_transact'])
     );
-    header("Location: Cadminusers.php");
+    header("Location: controller_adminusers.php");
     exit();
 }
 
@@ -28,7 +28,7 @@ ob_start();
 switch ($action_user) {
     case 'delete':
         $userDB->deleteUser($_GET['id']);
-        header("Location: Cadminusers.php");
+        header("Location: controller_adminusers.php");
         exit();
     case 'create':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,7 +37,7 @@ switch ($action_user) {
 
             $userDB->insertUser($user);
 
-            header("Location: admin/Controller/Cadminusers.php");
+            header("Location: admin/Controller/controller_adminusers.php");
             exit();
         }
         include '../view/pages/form_createuser.php';

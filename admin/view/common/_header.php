@@ -9,8 +9,5 @@
         <a href="index.php" class="btn btn-ghost bg-[#F1F3F4] text-black hover:text-grey gap-2 border border-white/10">
             Voir le site
         </a>
-        <a href="#" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white hover:text-blue">
-            ADMIN
-        </a>
     </div>
 </header>

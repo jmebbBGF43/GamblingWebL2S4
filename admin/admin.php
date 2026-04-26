@@ -12,13 +12,13 @@ ob_start();
 
 switch ($page) {
     case 'users':
-        include 'Controller/Cadminusers.php';
+        include 'Controller/controller_adminusers.php';
         break;
     case 'games':
-        include 'Controller/Cadmingames.php';
+        include 'Controller/controller_admingames.php';
         break;
     case 'faq':
-        include 'Controller/Cadminfaq.php';
+        include 'Controller/controller_adminfaq.php';
         break;
     default:
         include 'view/pages/home.php';
