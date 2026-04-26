@@ -1,5 +1,5 @@
-<div class="flex w-full text-bold text-3xl font-bold h-20 border-b border-white/5 pt-3 mb-11">
-    Pile OU Face
+<div class="max-w-6xl mx-auto p-4 border-b border-white/5 pt-3 mb-11">
+    <h1 class="text-4xl font-black text-white text-center mb-6 uppercase tracking-widest">Pile o<span class="text-[#1576e2]">u Face</span></h1>
 </div>
 <div class="max-w-xl mx-auto p-6 bg-[#1a2c38] rounded border border-white/10 shadow-2xl text-[#9d9d9d]">
     <div class="flex flex-col gap-4">
