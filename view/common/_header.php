@@ -54,11 +54,11 @@ if (isset($_SESSION['user_id'])) {
                             💳 Paiement
                         </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="<?= BASE_URL ?>Controller/controller_menu.php?user_pageID=parameter" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                             ⚙️ Paramètres
                         </a>
-                    </li>
+                    </li> -->
                     <div class="h-[1px] bg-white/10 my-1 mx-1"></div>
                     <li>
                         <a href="<?= BASE_URL ?>Controller/controller_logout.php" class="text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors rounded py-3">
