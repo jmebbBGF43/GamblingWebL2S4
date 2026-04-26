@@ -27,14 +27,30 @@
         <br>
         <h3 class="text-xl font-bold text-white mt-8 mb-2">Envoyez-nous un Mail qu'on ne lira pas :</h3>
 
-        <form class="flex flex-col gap-4">
-            <input type="email" placeholder="votre@email.com" class="w-full p-3 rounded bg-white text-black" />
-            <input type="text" placeholder="Sujet du litige perdu d'avance" class="w-full p-3 rounded bg-white text-black" />
-            <textarea placeholder="Contenu de votre message inutile..." rows="5" class="w-full p-3 h-40 rounded bg-white text-black resize-none"></textarea>
-            <button type="submit" class="w-full py-3 rounded font-bold bg-[#1576e2] hover:bg-blue-600 text-white transition-colors shadow-lg">
-                Envoyer dans le vide
-            </button>
-        </form>
+        <div class="max-w-2xl mx-auto mt-10">
+
+            <?php if (isset($_SESSION['contact_success'])): ?>
+                <div class="bg-green-500/20 border border-green-500 text-green-400 p-4 rounded mb-6 text-center font-bold">
+                    <?= $_SESSION['contact_success']; unset($_SESSION['contact_success']); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['contact_error'])): ?>
+                <div class="bg-red-500/20 border border-red-500 text-red-400 p-4 rounded mb-6 text-center font-bold">
+                    <?= $_SESSION['contact_error']; unset($_SESSION['contact_error']); ?>
+                </div>
+            <?php endif; ?>
+
+            <form action="<?= BASE_URL ?>Controller/controller_contact.php" method="POST" class="flex flex-col gap-4">
+                <input type="email" name="email" required placeholder="votre@email.com" class="w-full p-3 rounded bg-white text-black" />
+                <input type="text" name="subject" required placeholder="Sujet du litige perdu d'avance" class="w-full p-3 rounded bg-white text-black" />
+                <textarea name="message" required placeholder="Contenu de votre message inutile..." rows="5" class="w-full p-3 h-40 rounded bg-white text-black resize-none"></textarea>
+                <button type="submit" class="w-full py-3 rounded font-bold bg-[#1576e2] hover:bg-blue-600 text-white transition-colors shadow-lg">
+                    Envoyer dans le vide
+                </button>
+            </form>
+
+        </div>
     </div>
 
 </div>
