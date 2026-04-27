@@ -4,6 +4,7 @@ use Model\Entity\User;
 
 require_once "../../configuration/config.php";
 require_once ROOT_DIR . "Model/ConnexionDB.php";
+require_once ROOT_DIR . "Model/Class/User.php";
 require_once ROOT_DIR . "Model/Class/UserDB.php";
 
 $userDB = new \Model\Entity\UserDB();
@@ -30,15 +31,35 @@ switch ($action_user) {
         $userDB->deleteUser($_GET['id']);
         header("Location: controller_adminusers.php");
         exit();
+
     case 'create':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // 1. Vérification de sécurité CSRF
+            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                die("Erreur de sécurité : Jeton CSRF invalide.");
+            }
 
-            $user = new User($_POST['create_username'], password_hash($_POST['create_password'], PASSWORD_DEFAULT), (int)$_POST['create_credits'], $_POST['create_role']); // (Ou new User() si ta classe est bien configurée)
+            $username = trim($_POST['create_username']);
+            $password = $_POST['create_password'];
+            $credits = floatval($_POST['create_credits']);
+            $role = $_POST['create_role'];
 
-            $userDB->insertUser($user);
+            if (!empty($username) && !empty($password)) {
+                try {
+                    // On crée l'objet User avec le mot de passe hashé
+                    // Assure-toi que ton constructeur Model\Entity\User accepte bien ces 4 arguments
+                    $user = new User($username, password_hash($password, PASSWORD_DEFAULT), $credits, $role);
 
-            header("Location: admin/Controller/controller_adminusers.php");
-            exit();
+                    // Insertion en base
+                    $userDB->insertUser($user);
+
+                    // Redirection propre vers la liste des utilisateurs
+                    header("Location: controller_adminusers.php");
+                    exit();
+                } catch (\Exception $e) {
+                    die("Erreur lors de la création : " . $e->getMessage());
+                }
+            }
         }
         include '../view/pages/form_createuser.php';
         break;

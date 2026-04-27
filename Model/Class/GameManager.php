@@ -121,4 +121,10 @@ class GameManager
         }
         return $games;
     }
+
+    public function toggleGameStatus($id) {
+        // On inverse simplement la valeur du booléen is_active (TRUE devient FALSE et inversement)
+        $sql = "UPDATE games SET is_active = NOT is_active WHERE id = ?;";
+        $this->db->prepare($sql)->execute([$id]);
+    }
 }

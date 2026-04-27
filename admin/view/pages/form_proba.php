@@ -6,13 +6,23 @@
 ?>
 
 <div class="max-w-5xl mx-auto space-y-12 mt-10 mb-20">
-
+    <?php if (isset($_SESSION['admin_error'])): ?>
+        <div class="bg-red-500/20 border border-red-500 text-red-400 p-4 rounded mb-6 text-center font-bold">
+            <?= $_SESSION['admin_error']; unset($_SESSION['admin_error']); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['admin_success'])): ?>
+        <div class="bg-green-500/20 border border-green-500 text-green-400 p-4 rounded mb-6 text-center font-bold">
+            <?= $_SESSION['admin_success']; unset($_SESSION['admin_success']); ?>
+        </div>
+    <?php endif; ?>
     <div class="bg-[#355872] rounded-xl p-8 shadow-2xl border border-black/35">
         <h2 class="text-white text-3xl mb-6 font-bold border-b border-white/10 pb-4">
             Configuration : <span class="text-[#1576e2]"><?= htmlspecialchars($game['name']) ?></span>
         </h2>
 
-        <form method="POST" action="/~uapv2500805/admin/Controller/controller_admingames.php?action_game=update_proba" class="flex flex-col gap-8">
+        <form method="POST" action="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=update_proba" class="flex flex-col gap-8">
+            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
             <input type="hidden" name="id" value="<?= $game['id'] ?>">
             <input type="hidden" name="slug" value="<?= htmlspecialchars($game['slug']) ?>">
 
@@ -41,7 +51,7 @@
                                 <div class="flex items-center gap-4">
                                     <h3 class="text-xl font-black text-blue-400"><?= htmlspecialchars($case['name']) ?></h3>
 
-                                    <a href="/~uapv2500805/admin/Controller/controller_admingames.php?action_game=delete_case&id=<?= $game['id'] ?>&case_id=<?= $case['id'] ?>"
+                                    <a href="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=delete_case&id=<?= $game['id'] ?>&case_id=<?= $case['id'] ?>"
                                        onclick="return confirm('Supprimer définitivement la caisse <?= htmlspecialchars(addslashes($case['name'])) ?> ?');"
                                        class="bg-red-600/80 hover:bg-red-500 text-white font-bold py-1 px-3 rounded text-xs transition-colors border border-red-500/50">
                                         🗑️ Supprimer
@@ -90,7 +100,7 @@
                 <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded transition-all text-xl shadow-lg uppercase">
                     💾 Sauvegarder les modifications
                 </button>
-                <a href="/~uapv2500805/admin/Controller/controller_admingames.php" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-4 px-8 rounded text-center transition-all flex items-center">
+                <a href="<?= BASE_URL ?>admin/Controller/controller_admingames.php" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-4 px-8 rounded text-center transition-all flex items-center">
                     ANNULER
                 </a>
             </div>
@@ -104,7 +114,8 @@
                 Ajouter une nouvelle caisse
             </h3>
 
-            <form method="POST" action="/~uapv2500805/admin/Controller/controller_admingames.php?action_game=add_case" class="space-y-6">
+            <form method="POST" action="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=add_case" class="space-y-6">
+                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
 
                 <div class="grid grid-cols-2 gap-6">

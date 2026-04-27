@@ -15,41 +15,53 @@ try {
     $action = $_GET['action_mail'] ?? '';
 
     // =========================================================
-    // ACTION : RÉPONDRE (MODE TEST ULTRA SIMPLE EN DUR)
+    // ACTION : RÉPONDRE AU MESSAGE
     // =========================================================
     if ($action === 'reply' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // 1. Vérification CSRF
+        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            $_SESSION['mail_error'] = "Erreur de sécurité : Jeton CSRF invalide.";
+            header("Location: controller_mail.php");
+            exit();
+        }
+
         $id = $_POST['id'];
         $reply_text = htmlspecialchars(trim($_POST['admin_reply']));
 
-        // 1. On sauvegarde en base (ça, on sait que ça marche)
+        // 2. On récupère les informations du message original
+        $messageData = $mailManager->getMessageById($id);
+
+        if (!$messageData) {
+            $_SESSION['mail_error'] = "Erreur : Impossible de trouver le message d'origine.";
+            header("Location: controller_mail.php");
+            exit();
+        }
+
+        // 3. On sauvegarde la réponse en base (et ça passe en 'lu')
         $mailManager->saveReply($id, $reply_text);
 
-        // 2. ENVOI DE TEST EN DUR (On ignore l'email du joueur pour le moment)
-        $to = "quincieu.thomas@gmail.com";
-        $subject = "Test ultime depuis Admin";
-        $body = "Ceci est un test.\nTexte tapé dans l'admin : " . $reply_text;
+        // 4. PRÉPARATION DE L'EMAIL
+        $to = $messageData['reply_email']; // L'adresse dynamique !
+        $subject = "Réponse à votre demande : " . $messageData['subject'];
 
-        // Le seul header qu'on garde : celui qui a marché pour ton pote
+        $body = "Bonjour,\n\nVoici la réponse de notre équipe à votre message :\n\n";
+        $body .= "----------------------------------------\n";
+        $body .= $reply_text . "\n";
+        $body .= "----------------------------------------\n\n";
+        $body .= "L'équipe Gambling.io";
+
         $headers = "From: noreply@gambling.io\r\n";
 
-        // On lance la commande et on stocke le résultat (true ou false)
-        $envoi = mail($to, $subject, $body, $headers);
-
-        // 3. AFFICHAGE DU RÉSULTAT (Bloque la page exprès pour qu'on voit le résultat)
-        if ($envoi) {
-            die("<div style='background: #dcfce7; color: #166534; padding: 20px; font-family: sans-serif; border-radius: 8px; margin: 20px;'>
-                    <h1 style='margin-top:0;'>✅ SUCCÈS PHP</h1>
-                    <p>La fonction mail() a retourné TRUE. Le serveur a accepté d'envoyer le message vers <b>$to</b>.</p>
-                    <p><i>Si tu ne reçois rien, regarde impérativement dans tes spams, car le message a bien quitté le serveur.</i></p>
-                    <br><a href='controller_mail.php' style='color: #166534; font-weight: bold;'>Retour au panel</a>
-                 </div>");
+        // 5. ENVOI ET REDIRECTION
+        if (mail($to, $subject, $body, $headers)) {
+            $_SESSION['mail_success'] = "La réponse a bien été envoyée à " . htmlspecialchars($to) . " !";
         } else {
-            die("<div style='background: #fee2e2; color: #991b1b; padding: 20px; font-family: sans-serif; border-radius: 8px; margin: 20px;'>
-                    <h1 style='margin-top:0;'>❌ ÉCHEC FATAL</h1>
-                    <p>La fonction mail() a retourné FALSE. Le serveur de l'université refuse l'envoi.</p>
-                    <br><a href='controller_mail.php' style='color: #991b1b; font-weight: bold;'>Retour au panel</a>
-                 </div>");
+            $_SESSION['mail_error'] = "La réponse est sauvegardée, mais l'envoi de l'email a échoué (bloqué par le serveur).";
         }
+
+        header("Location: controller_mail.php");
+        exit();
     }
 
     // =========================================================

@@ -10,23 +10,29 @@ $faqManager = new \Model\Entity\FaqManager();
 $action = $_GET['action_faq'] ?? '';
 
 // Traitement des actions
+// Traitement des actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Vérification CSRF
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Erreur de sécurité : Jeton CSRF invalide.");
+    }
+
     if ($action === 'store') {
         $faqManager->insertFaq($_POST['question'], $_POST['answer']);
-        header("Location: Cadminfaq.php");
+        header("Location: controller_adminfaq.php");
         exit();
     } elseif ($action === 'update') {
         $faqManager->updateFaq($_POST['id'], $_POST['question'], $_POST['answer'], isset($_POST['is_active']));
-        header("Location: Cadminfaq.php");
+        header("Location: controller_adminfaq.php");
         exit();
     }
 } elseif ($action === 'delete' && isset($_GET['id'])) {
     $faqManager->deleteFaq($_GET['id']);
-    header("Location: Cadminfaq.php");
+    header("Location: controller_adminfaq.php");
     exit();
 } elseif ($action === 'toggle' && isset($_GET['id'])) {
     $faqManager->toggleActive($_GET['id']);
-    header("Location: Cadminfaq.php");
+    header("Location: controller_adminfaq.php");
     exit();
 }
 

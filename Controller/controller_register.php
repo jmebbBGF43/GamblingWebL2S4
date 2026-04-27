@@ -4,7 +4,7 @@ use Model\ConnexionDB;
 use Model\Entity\User;
 use Model\Entity\UserDB;
 
-
+require_once "../configuration/config.php";
 require_once "../Model/ConfigurationDB.php";
 require_once "../Model/ConnexionDB.php";
 require_once "../Model/Class/User.php";
@@ -35,9 +35,16 @@ try {
         $userDB = new UserDB();
         $userDB->insertUser($user);
 
-        echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Compte créé !</p>";
-        header("Location: " . BASE_URL . "home");
-        exit();
+        $stmt = ConnexionDB::getPDO()->prepare("SELECT id, username, role FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        $userData = $stmt->fetch();
+        if ($userData) {
+            $_SESSION['user_id'] = $userData['id'];
+            $_SESSION['username'] = $userData['username'];
+            $_SESSION['role'] = $userData['role'];
+            header("Location: " . BASE_URL . "home");
+            exit();
+        }
     }
 } catch (Exception $e) {
     echo $e->getMessage();

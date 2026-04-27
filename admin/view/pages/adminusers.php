@@ -86,10 +86,10 @@ $banRate = $totalUsers > 0 ? round(($bannedCount / $totalUsers) * 100, 2) : 0;
                 <td class="px-6 py-4"><?= !empty($user['can_transact']) ? 'Oui' : 'Non' ?></td>
                 <td class="px-6 py-4"><?= htmlspecialchars($user['created_at']) ?></td>
                 <td class="flex gap-4 my-2 px-6 py-4">
-                    <a href="admin/Controller/Cadminusers.php?action_user=edit&id=<?= $user['id'] ?>" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white py-2 px-4 hover:opacity-80">
+                    <a href="<?= BASE_URL ?>admin/Controller/controller_adminusers.php?action_user=edit&id=<?= $user['id'] ?>" class="btn btn-primary rounded font-bold border-none bg-[#1576e2] text-white py-2 px-4 hover:opacity-80">
                         Modifier
                     </a>
-                    <a href="admin/Controller/Cadminusers.php?action_user=delete&id=<?= $user['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');" class="btn btn-primary rounded font-bold border-none bg-red-600 text-white py-2 px-4 hover:opacity-80">
+                    <a href="<?= BASE_URL ?>admin/Controller/controller_adminusers.php?action_user=delete&id=<?= $user['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');" class="btn btn-primary rounded font-bold border-none bg-red-600 text-white py-2 px-4 hover:opacity-80">
                         Supprimer
                     </a>
                 </td>
@@ -105,6 +105,6 @@ $banRate = $totalUsers > 0 ? round(($bannedCount / $totalUsers) * 100, 2) : 0;
     Autres actions
 </div>
 
-<a href="admin/Controller/Cadminusers.php?action_user=create" class="w-fit flex items-center gap-3 px-6 py-5 my-5 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white transition-all shadow-sm">
+<a href="<?= BASE_URL ?>admin/Controller/controller_adminusers.php?action_user=create" class="w-fit flex items-center gap-3 px-6 py-5 my-5 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white transition-all shadow-sm">
     Ajouter un utilisateur
 </a>
