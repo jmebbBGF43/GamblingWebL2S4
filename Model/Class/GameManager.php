@@ -127,4 +127,14 @@ class GameManager
         $sql = "UPDATE games SET is_active = NOT is_active WHERE id = ?;";
         $this->db->prepare($sql)->execute([$id]);
     }
+
+    public function getCasinoProfits() {
+        // Le bénéfice est la différence entre les mises et les gains
+        $sql = "SELECT SUM(bet_amount - payout) AS total_profit FROM bets";
+        $stmt = $this->db->query($sql);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        // Si la table est vide, on retourne 0 pour éviter une erreur
+        return $result['total_profit'] !== null ? (float)$result['total_profit'] : 0.00;
+    }
 }

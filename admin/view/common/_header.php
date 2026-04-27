@@ -1,7 +1,7 @@
 <header class="h-20 flex justify-between px-8 bg-[#355872] border-b border-black/35">
     <div class="flex items-center">
         <div class="text-2xl font-black tracking-tighter text-white">
-            <a href="admin.php" class="text-[#0f212e]">GAMBLING<span class="text-[#1576e2]">.ADMIN</a>
+            <a href="admin/Controller/controller_adminusers.php" class="text-[#0f212e]">GAMBLING<span class="text-[#1576e2]">.ADMIN</a>
         </div>
     </div>
 

@@ -90,5 +90,17 @@ class UserDB{
         $sql = "UPDATE users SET password_hash = ? WHERE id = ?;";
         $this->db->prepare($sql)->execute([$newPasswordHash, $id]);
     }
+
+    // Fonction pour supprimer un compte définitivement
+    public function deleteUserAccount($userId) {
+        // 1. (Optionnel) Si tes autres tables (contact_messages, etc.) n'ont pas l'option "ON DELETE CASCADE" en SQL,
+        // tu dois supprimer les données liées avant l'utilisateur pour éviter une erreur de clé étrangère.
+        $this->db->prepare("DELETE FROM contact_messages WHERE user_id = ?")->execute([$userId]);
+
+        // 2. Suppression de l'utilisateur
+        $sql = "DELETE FROM users WHERE id = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$userId]);
+    }
 }
 
