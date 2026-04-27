@@ -19,6 +19,7 @@
 
 <script>
     async function playGame(choice) {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         const betInput = document.getElementById('betAmount').value;
         const resultBox = document.getElementById('resultBox');
 
@@ -30,7 +31,7 @@
             const response = await fetch('<?= BASE_URL ?>Controller/controller_play.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({game: 'pileOuFace', bet: betInput, choice: choice
+                body: JSON.stringify({game: 'pileOuFace', bet: betInput, choice: choice, csrf_token: csrfToken
                 })
             });
             const data = await response.json();

@@ -14,7 +14,7 @@
     <?php endif; ?>
 
     <form action="<?= BASE_URL ?>Controller/controller_add_funds.php" method="POST" class="flex flex-col items-center gap-8 p-4">
-
+        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
         <div class="flex flex-row justify-center items-center gap-4 w-full">
             <button type="button" onclick="changeAmount(-10)" class="bg-[#1576e2] hover:bg-blue-600 text-white text-2xl font-bold border-none rounded px-6 w-14 h-14 flex items-center justify-center">
                 -

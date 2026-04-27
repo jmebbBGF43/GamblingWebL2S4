@@ -23,7 +23,10 @@ if (!isset($_SESSION['user_id'])) {
 
 $rawData = file_get_contents("php://input");
 $request = json_decode($rawData, true);
-
+if (!isset($request['csrf_token']) || $request['csrf_token'] !== $_SESSION['csrf_token']) {
+    echo json_encode(['status' => 'error', 'message' => 'Erreur de sécurité (CSRF). Veuillez rafraîchir la page.']);
+    exit();
+}
 $bet = floatval($request['bet'] ?? 0);
 $gameSlug = $request['game'] ?? '';
 

@@ -1,4 +1,5 @@
 <form action="/~uapv2500969/Controller/controller_login.php" method="POST" class="h-full w-full flex items-center justify-center">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
     <div class="flex items-center justify-center flex-col">
         <div class="w-80 flex flex-col gap-6 bg-[#0f212d] rounded-xl p-6">
             <div>

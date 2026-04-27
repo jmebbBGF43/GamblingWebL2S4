@@ -10,6 +10,9 @@ use Model\Entity\UserDB;
 $error_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Erreur de sécurité : Jeton CSRF invalide. Action bloquée.");
+    }
     $username = $_POST['login_id'] ?? null;
     $password = $_POST['login_password'] ?? null;
     $remember = isset($_POST['remember_me']);
