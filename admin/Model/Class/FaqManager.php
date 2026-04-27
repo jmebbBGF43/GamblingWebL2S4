@@ -37,4 +37,9 @@ class FaqManager {
         $sql = "UPDATE faq SET is_active = NOT is_active WHERE id = ?;";
         $this->db->prepare($sql)->execute([$id]);
     }
+
+    public function getActiveFaqs() {
+        // On rajoute "WHERE is_active = true" pour filtrer directement en base de données
+        return $this->db->query("SELECT * FROM faq WHERE is_active = true ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

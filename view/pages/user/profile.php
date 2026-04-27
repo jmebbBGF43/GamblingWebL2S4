@@ -44,8 +44,13 @@
         <a href="<?= BASE_URL ?>parametres" class="block w-full py-3 text-center bg-[#1576e2] hover:bg-blue-600 text-white font-bold rounded">
             MODIFIER LE MOT DE PASSE
         </a>
-        <a href="<?= BASE_URL ?>Controller/controller_logout.php" class="block w-full py-3 text-center bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/30 font-bold rounded">
+        <a href="<?= BASE_URL ?>Controller/controller_logout.php"
+           class="block w-full py-3 text-center bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/30 font-bold rounded">
             SE DÉCONNECTER
+        </a>
+        <a href="<?= BASE_URL ?>Controller/controller_logout.php"
+           class="block w-full py-3 text-center bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/30 font-bold rounded">
+            SUPPRIMER LE COMPTE
         </a>
     </div>
 </div>

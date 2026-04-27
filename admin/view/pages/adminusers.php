@@ -37,10 +37,10 @@ $banRate = $totalUsers > 0 ? round(($bannedCount / $totalUsers) * 100, 2) : 0;
     </div>
     <div class="flex flex-col items-center gap-6 bg-[#355872] rounded-xl p-6">
         <div class="text-white f-bold">
-            <p class="text-white text-3xl">Bénéfices du Casino</p>
+            <p class="text-white text-3xl">Bénéfices du casino</p>
         </div>
-        <div class="text-white">
-            <p class="text-white text-3xl">N/A</p>
+        <div class="text-white f-bold">
+            <p class="text-white text-3xl"><?= $casinoProfit ?></p>
         </div>
     </div>
     <div class="flex flex-col items-center gap-6 bg-[#355872] rounded-xl p-6">
