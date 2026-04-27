@@ -1,5 +1,5 @@
 <form action="/~uapv2500969/Controller/controller_register.php" method="POST" class="h-full w-full flex items-center justify-center">
-
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
     <div class="w-80 flex flex-col gap-6 bg-[#0f212d] rounded-xl p-6">
         <div>
             <p class="text-white text-2xl">S'enregistrer</p>

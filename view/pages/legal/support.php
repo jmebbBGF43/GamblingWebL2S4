@@ -42,6 +42,7 @@
             <?php endif; ?>
 
             <form action="<?= BASE_URL ?>Controller/controller_contact.php" method="POST" class="flex flex-col gap-4">
+                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="email" name="email" required placeholder="votre@email.com" class="w-full p-3 rounded bg-white text-black" />
                 <input type="text" name="subject" required placeholder="Sujet du litige perdu d'avance" class="w-full p-3 rounded bg-white text-black" />
                 <textarea name="message" required placeholder="Contenu de votre message inutile..." rows="5" class="w-full p-3 h-40 rounded bg-white text-black resize-none"></textarea>

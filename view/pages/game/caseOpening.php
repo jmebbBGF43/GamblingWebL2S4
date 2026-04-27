@@ -69,6 +69,7 @@ $colorMap = [
     }
 
     async function openCase(caseId, price) {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         const resultZone = document.getElementById('result-zone');
         const resultItem = document.getElementById('result-item');
         const resultPayout = document.getElementById('result-payout');
@@ -88,7 +89,7 @@ $colorMap = [
                 body: JSON.stringify({
                     game: 'caseOpening',
                     choice: caseId,
-                    bet: price
+                    bet: price, csrf_token: csrfToken
                 })
             });
 

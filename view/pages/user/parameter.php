@@ -14,6 +14,7 @@
     <?php endif; ?>
 
     <form action="<?= BASE_URL ?>Controller/controller_update_password.php" method="POST" class="flex flex-col gap-6">
+        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
         <div>
             <label for="old_password" class="block text-white font-bold mb-2">Ancien mot de passe</label>

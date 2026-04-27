@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gambling.io</title>
+    <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?? '' ?>">
     <base href="https://pedago.univ-avignon.fr/~uapv2500969/">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" />

@@ -21,7 +21,9 @@ $confirmpassword = $_POST['register_confirmpassword'] ?? null;
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            die("Erreur de sécurité : Jeton CSRF invalide. Action bloquée.");
+        }
         if (empty($username) || empty($password)) {
             throw new Exception("<p class='text-red-500 text-2xl font-bold mb-2 text-center mt-4 mb-4'>Veuillez remplir tous les champs</p>");
         }
