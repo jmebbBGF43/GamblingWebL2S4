@@ -56,18 +56,18 @@ if (!isset($messages)) {
                         <button type="button" onclick="toggleReplyForm(<?= $msg['id'] ?>)" class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">✉️ RÉPONDRE</button>
 
                         <?php if ($msg['status'] === 'unread'): ?>
-                            <a href="<?= BASE_URL ?>admin/Controller/controller_mail.php?action_mail=status&id=<?= $msg['id'] ?>&status=read" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">✓ MARQUER LU</a>
+                            <a href="<?= BASE_URL ?>admin/mails/status/<?= $msg['id'] ?>/read" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">✓ MARQUER LU</a>
                         <?php else: ?>
-                            <a href="<?= BASE_URL ?>admin/Controller/controller_mail.php?action_mail=status&id=<?= $msg['id'] ?>&status=unread" class="bg-gray-600 hover:bg-gray-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">MARQUER NON LU</a>
+                            <a href="<?= BASE_URL ?>admin/mails/status/<?= $msg['id'] ?>/unread" class="bg-gray-600 hover:bg-gray-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">MARQUER NON LU</a>
                         <?php endif; ?>
 
-                        <a href="<?= BASE_URL ?>admin/Controller/controller_mail.php?action_mail=delete&id=<?= $msg['id'] ?>" onclick="return confirm('Supprimer ?')" class="bg-red-600/20 text-red-500 border border-red-500/50 hover:bg-red-600 hover:text-white text-[10px] font-bold py-2 px-3 rounded text-center">🗑️ SUPPRIMER</a>
+                        <a href="<?= BASE_URL ?>admin/mails/delete/<?= $msg['id'] ?>" onclick="return confirm('Supprimer ?')" class="bg-red-600/20 text-red-500 border border-red-500/50 hover:bg-red-600 hover:text-white text-[10px] font-bold py-2 px-3 rounded text-center">🗑️ SUPPRIMER</a>
                     </div>
                 </td>
             </tr>
             <tr id="reply-row-<?= $msg['id'] ?>" class="hidden bg-black/30">
                 <td colspan="5" class="px-6 py-4">
-                    <form method="POST" action="<?= BASE_URL ?>admin/Controller/controller_mail.php?action_mail=reply" class="flex flex-col gap-3">
+                    <form method="POST" action="<?= BASE_URL ?>admin/mails/reply" class="flex flex-col gap-3">
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                         <input type="hidden" name="id" value="<?= $msg['id'] ?>">
                         <textarea name="admin_reply" class="w-full p-3 rounded bg-white text-black text-sm h-24" placeholder="Votre réponse email..." required><?= htmlspecialchars($msg['admin_reply'] ?? '') ?></textarea>

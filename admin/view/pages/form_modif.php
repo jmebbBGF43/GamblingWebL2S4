@@ -1,4 +1,4 @@
-<form method="POST" action="<?= BASE_URL ?>admin/Controller/controller_adminusers.php?action_user=update" class="h-full w-full flex items-center justify-center">
+<form method="POST" action="<?= BASE_URL ?>admin/utilisateurs/update" class="h-full w-full flex items-center justify-center">
     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
     <div class="flex items-center justify-center flex-col">
         <div class="w-auto flex flex-col gap-6 bg-[#355872] rounded-xl p-8">

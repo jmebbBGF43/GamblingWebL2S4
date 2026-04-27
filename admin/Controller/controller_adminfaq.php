@@ -19,20 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'store') {
         $faqManager->insertFaq($_POST['question'], $_POST['answer']);
-        header("Location: controller_adminfaq.php");
+        header("Location: " . BASE_URL . "admin/faq");
         exit();
     } elseif ($action === 'update') {
         $faqManager->updateFaq($_POST['id'], $_POST['question'], $_POST['answer'], isset($_POST['is_active']));
-        header("Location: controller_adminfaq.php");
+        header("Location: " . BASE_URL . "admin/faq");
         exit();
     }
 } elseif ($action === 'delete' && isset($_GET['id'])) {
     $faqManager->deleteFaq($_GET['id']);
-    header("Location: controller_adminfaq.php");
+    header("Location: " . BASE_URL . "admin/faq");
     exit();
 } elseif ($action === 'toggle' && isset($_GET['id'])) {
     $faqManager->toggleActive($_GET['id']);
-    header("Location: controller_adminfaq.php");
+    header("Location: " . BASE_URL . "admin/faq");
     exit();
 }
 

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $action_game === 'toggle_status') {
         $gameManager->toggleGameStatus($id);
     }
 
-    header("Location: ". BASE_URL ."admin/Controller/controller_admingames.php");
+    header("Location: " . BASE_URL . "admin/jeux");
     exit();
 }
 // ACTION : MISE À JOUR DES CAISSES EXISTANTES
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'update_proba') {
         }
     }
     $gameManager->setProbs($id, $probs);
-    header("Location: ". BASE_URL ."admin/Controller/controller_admingames.php");
+    header("Location: " . BASE_URL . "admin/jeux");
     exit();
 }
 
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $action_game === 'delete_case') {
     }
 
     // 4. On redirige vers la page de modification
-    header("Location: ". BASE_URL ."admin/Controller/controller_admingames.php?action_game=proba&id=" . $id);
+    header("Location: " . BASE_URL . "admin/jeux/proba/" . $id);
     exit();
 }
 
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'add_case') {
     foreach ($currentProbs['cases'] as $c) {
         if (strtolower($c['name']) === strtolower($newName)) {
             $_SESSION['admin_error'] = "Une caisse nommée '$newName' existe déjà !";
-            header("Location: controller_admingames.php?action_game=proba&id=" . $id);
+            header("Location: " . BASE_URL . "admin/jeux/proba/" . $id);
             exit();
         }
     }
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'add_case') {
 
     if ($totalProb !== 100) {
         $_SESSION['admin_error'] = "Impossible d'ajouter. La somme des probabilités est de $totalProb% au lieu de 100% !";
-        header("Location: controller_admingames.php?action_game=proba&id=" . $id);
+        header("Location: " . BASE_URL . "admin/jeux/proba/" . $id);
         exit();
     }
 
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'add_case') {
     $gameManager->setProbs($id, $currentProbs);
 
     $_SESSION['admin_success'] = "La caisse '$newName' a bien été ajoutée !";
-    header("Location: controller_admingames.php?action_game=proba&id=" . $id);
+    header("Location: " . BASE_URL . "admin/jeux/proba/" . $id);
     exit();
 }
 

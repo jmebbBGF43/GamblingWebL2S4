@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_user === 'update') {
         isset($_POST['update_can_play']),
         isset($_POST['update_can_transact'])
     );
-    header("Location: controller_adminusers.php");
+    header("Location: " . BASE_URL . "admin/utilisateurs");
     exit();
 }
 
@@ -34,7 +34,7 @@ ob_start();
 switch ($action_user) {
     case 'delete':
         $userDB->deleteUser($_GET['id']);
-        header("Location: controller_adminusers.php");
+        header("Location: " . BASE_URL . "admin/utilisateurs");
         exit();
 
     case 'create':
@@ -58,7 +58,7 @@ switch ($action_user) {
                     $userDB->insertUser($user);
 
                     // Redirection propre vers la liste des utilisateurs
-                    header("Location: controller_adminusers.php");
+                    header("Location: " . BASE_URL . "admin/utilisateurs");
                     exit();
                 } catch (\Exception $e) {
                     die("Erreur lors de la création : " . $e->getMessage());

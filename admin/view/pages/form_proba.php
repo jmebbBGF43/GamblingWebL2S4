@@ -21,7 +21,7 @@
             Configuration : <span class="text-[#1576e2]"><?= htmlspecialchars($game['name']) ?></span>
         </h2>
 
-        <form method="POST" action="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=update_proba" class="flex flex-col gap-8">
+        <form method="POST" action="<?= BASE_URL ?>admin/jeux/update_proba" class="flex flex-col gap-8">
             <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
             <input type="hidden" name="id" value="<?= $game['id'] ?>">
             <input type="hidden" name="slug" value="<?= htmlspecialchars($game['slug']) ?>">
@@ -114,7 +114,7 @@
                 Ajouter une nouvelle caisse
             </h3>
 
-            <form method="POST" action="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=add_case" class="space-y-6">
+            <form method="POST" action="<?= BASE_URL ?>admin/jeux/add_case" class="space-y-6">
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
 

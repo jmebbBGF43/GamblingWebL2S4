@@ -35,10 +35,10 @@ if (!isset($faqs)) {
                     </span>
                 </td>
                 <td class="px-6 py-4 flex gap-2">
-                    <a href="<?= BASE_URL ?>admin/Controller/controller_adminfaq.php?action_faq=toggle&id=<?= $faq['id'] ?>" class="p-2 bg-yellow-600 rounded text-center hover:opacity-80">
+                    <a href="<?= BASE_URL ?>admin/faq/toggle/<?= $faq['id'] ?>" class="p-2 bg-yellow-600 rounded text-center hover:opacity-80">
                         <?= $faq['is_active'] ? 'Masquer' : 'Afficher' ?>
                     </a>
-                    <a href="<?= BASE_URL ?>admin/Controller/controller_adminfaq.php?action_faq=delete&id=<?= $faq['id'] ?>" onclick="return confirm('Supprimer définitivement ?');" class="p-2 bg-red-600 rounded text-center hover:opacity-80">
+                    <a href="<?= BASE_URL ?>admin/faq/delete/<?= $faq['id'] ?>" onclick="return confirm('Supprimer définitivement ?');" class="p-2 bg-red-600 rounded text-center hover:opacity-80">
                         Supprimer
                     </a>
                 </td>
@@ -52,7 +52,7 @@ if (!isset($faqs)) {
 
 <div class="bg-[#355872] rounded-xl p-8 w-full max-w-2xl mx-auto">
     <p class="text-white text-2xl mb-6">Ajouter une nouvelle FAQ</p>
-    <form method="POST" action="<?= BASE_URL ?>admin/Controller/controller_adminfaq.php?action_faq=store" class="flex flex-col gap-4">
+    <form method="POST" action="<?= BASE_URL ?>admin/faq/store/" class="flex flex-col gap-4">
         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
         <input type="text" name="question" placeholder="La question..." class="p-2 rounded bg-white text-black" required>
         <textarea name="answer" placeholder="La réponse..." class="p-2 rounded bg-white text-black h-32" required></textarea>

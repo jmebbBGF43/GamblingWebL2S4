@@ -3,16 +3,16 @@
         <div class="text-[#2C4A63] font-bold text-xs uppercase tracking-widest mb-2 opacity-70">
             Administration
         </div>
-        <a href="admin/Controller/controller_adminusers.php" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
+        <a href="admin/utilisateurs/" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
             <span class="mr-3">👥</span> Gestion utilisateurs
         </a>
-        <a href="admin/Controller/controller_admingames.php" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
+        <a href="admin/jeux/" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
             <span class="mr-3">🎮</span> Gestion des jeux
         </a>
-        <a href="admin/Controller/controller_adminfaq.php" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
+        <a href="admin/faq/" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
             <span class="mr-3">🗣️</span> Gestion de la FAQ
         </a>
-        <a href="admin/Controller/controller_mail.php" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
+        <a href="admin/mails/" class="flex items-center px-4 py-3 bg-[#E0F2FE] text-[#2C4A63] font-semibold rounded-xl border border-[#7AAACE]/30 hover:bg-[#7AAACE] hover:text-white">
             <span class="mr-3">🗣️</span> Mails
         </a>
     </nav>

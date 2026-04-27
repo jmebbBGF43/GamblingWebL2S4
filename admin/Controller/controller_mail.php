@@ -22,7 +22,7 @@ try {
         // 1. Vérification CSRF
         if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
             $_SESSION['mail_error'] = "Erreur de sécurité : Jeton CSRF invalide.";
-            header("Location: controller_mail.php");
+            header("Location: " . BASE_URL . "admin/mails");
             exit();
         }
 
@@ -34,7 +34,7 @@ try {
 
         if (!$messageData) {
             $_SESSION['mail_error'] = "Erreur : Impossible de trouver le message d'origine.";
-            header("Location: controller_mail.php");
+            header("Location: " . BASE_URL . "admin/mails");
             exit();
         }
 
@@ -60,7 +60,7 @@ try {
             $_SESSION['mail_error'] = "La réponse est sauvegardée, mais l'envoi de l'email a échoué (bloqué par le serveur).";
         }
 
-        header("Location: controller_mail.php");
+        header("Location: " . BASE_URL . "admin/mails");
         exit();
     }
 
@@ -69,7 +69,7 @@ try {
     // =========================================================
     elseif ($action === 'delete' && isset($_GET['id'])) {
         $mailManager->deleteMessage($_GET['id']);
-        header("Location: controller_mail.php");
+        header("Location: " . BASE_URL . "admin/mails");
         exit();
     }
 
@@ -78,7 +78,7 @@ try {
     // =========================================================
     elseif ($action === 'status' && isset($_GET['id']) && isset($_GET['status'])) {
         $mailManager->updateStatus($_GET['id'], $_GET['status']);
-        header("Location: controller_mail.php");
+        header("Location: " . BASE_URL . "admin/mails");
         exit();
     }
 
