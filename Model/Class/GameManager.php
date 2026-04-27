@@ -108,4 +108,17 @@ class GameManager
         }
         return $data ?: null;
     }
+
+    public function getAllGames(): array
+    {
+        $sql = "SELECT * FROM games ORDER BY id ASC;";
+        $stmt = $this->db->query($sql);
+        $games = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        // On décode le JSON de chaque jeu pour qu'il soit utilisable en PHP
+        foreach ($games as &$game) {
+            $game['probabilities'] = json_decode($game['probabilities'], true) ?? [];
+        }
+        return $games;
+    }
 }
