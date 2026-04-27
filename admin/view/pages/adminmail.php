@@ -1,47 +1,68 @@
 <?php
-// Patch d'autochargement si la page est incluse directement via admin.php
-if (!isset($mails) || !isset($users)) {
+if (!isset($messages)) {
     require_once __DIR__ . "/../../../configuration/config.php";
     require_once ROOT_DIR . "Model/ConnexionDB.php";
-    require_once ROOT_DIR . "Model/Class/MailManager.php";
-    require_once ROOT_DIR . "Model/Class/UserDB.php";
-
+    require_once ROOT_DIR . "admin/Model/Class/MailManager.php";
     $mailManager = new \Model\Entity\MailManager();
-    $userDB = new \Model\Entity\UserDB();
-
-    $mails = $mailManager->getAllMails();
-    $users = $userDB->getAllUsers();
+    $messages = $mailManager->getAllMessages();
 }
 ?>
 
 <div class="flex text-bold text-4xl font-bold py-2 border-b border-white/5">
-    Messagerie (Boîte d'envoi)
+    Support Client (Messages)
 </div>
 
-<div class="relative overflow-x-auto bg-[#355872] shadow-xs rounded-base border border-black/35 mt-8">
+<div class="relative overflow-x-auto bg-[#355872] shadow-xs rounded-base border border-black/35 mt-8 pb-10">
     <table class="w-full text-sm text-left text-white">
-        <thead class="bg-neutral-secondary-soft border-b border-default text-white">
+        <thead class="bg-neutral-secondary-soft border-b border-default text-white uppercase text-xs">
         <tr>
-            <th class="px-6 py-3">De</th>
-            <th class="px-6 py-3">À</th>
-            <th class="px-6 py-3">Sujet</th>
+            <th class="px-6 py-3">Joueur</th>
+            <th class="px-6 py-3">Email</th>
             <th class="px-6 py-3">Message</th>
-            <th class="px-6 py-3">Date</th>
-            <th class="px-6 py-3">Action</th>
+            <th class="px-6 py-3 text-center">Statut</th>
+            <th class="px-6 py-3 text-center">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($mails as $mail): ?>
-            <tr class="border-b border-default">
-                <td class="px-6 py-4 font-bold text-yellow-400"><?= htmlspecialchars($mail['sender_name'] ?? 'Système') ?></td>
-                <td class="px-6 py-4 font-bold text-green-400"><?= htmlspecialchars($mail['receiver_name'] ?? 'Inconnu') ?></td>
-                <td class="px-6 py-4 font-bold"><?= htmlspecialchars($mail['subject']) ?></td>
-                <td class="px-6 py-4 text-gray-300"><?= nl2br(htmlspecialchars($mail['message'])) ?></td>
-                <td class="px-6 py-4 text-gray-400"><?= htmlspecialchars($mail['created_at']) ?></td>
-                <td class="px-6 py-4 flex gap-2">
-                    <a href="/~uapv2500805/admin/Controller/controller_mail.php?action_mail=delete&id=<?= $mail['id'] ?>" onclick="return confirm('Voulez-vous supprimer ce message ?');" class="p-2 bg-red-600 rounded text-center hover:opacity-80">
-                        Supprimer
-                    </a>
+        <?php foreach ($messages as $msg): ?>
+            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="px-6 py-4 font-bold text-blue-300"><?= htmlspecialchars($msg['username'] ?? 'Invité') ?></td>
+                <td class="px-6 py-4 font-mono text-xs"><?= htmlspecialchars($msg['reply_email']) ?></td>
+                <td class="px-6 py-4 max-w-md">
+                    <p class="font-bold text-white"><?= htmlspecialchars($msg['subject']) ?></p>
+                    <p class="text-gray-300 text-xs italic">"<?= nl2br(htmlspecialchars($msg['message'])) ?>"</p>
+                </td>
+                <td class="px-6 py-4 text-center">
+                    <?php if ($msg['status'] === 'unread'): ?>
+                        <span class="bg-red-500/20 text-red-400 border border-red-500/50 px-2 py-1 rounded text-[10px] font-bold uppercase">Non lu</span>
+                    <?php else: ?>
+                        <span class="bg-blue-500/20 text-blue-400 border border-blue-500/50 px-2 py-1 rounded text-[10px] font-bold uppercase">Lu</span>
+                    <?php endif; ?>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="flex flex-col gap-2">
+                        <button type="button" onclick="toggleReplyForm(<?= $msg['id'] ?>)" class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">✉️ RÉPONDRE</button>
+
+                        <?php if ($msg['status'] === 'unread'): ?>
+                            <a href="controller_mail.php?action_mail=status&id=<?= $msg['id'] ?>&status=read" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">✓ MARQUER LU</a>
+                        <?php else: ?>
+                            <a href="controller_mail.php?action_mail=status&id=<?= $msg['id'] ?>&status=unread" class="bg-gray-600 hover:bg-gray-500 text-white text-[10px] font-bold py-2 px-3 rounded text-center">MARQUER NON LU</a>
+                        <?php endif; ?>
+
+                        <a href="controller_mail.php?action_mail=delete&id=<?= $msg['id'] ?>" onclick="return confirm('Supprimer ?')" class="bg-red-600/20 text-red-500 border border-red-500/50 hover:bg-red-600 hover:text-white text-[10px] font-bold py-2 px-3 rounded text-center">🗑️ SUPPRIMER</a>
+                    </div>
+                </td>
+            </tr>
+            <tr id="reply-row-<?= $msg['id'] ?>" class="hidden bg-black/30">
+                <td colspan="5" class="px-6 py-4">
+                    <form method="POST" action="controller_mail.php?action_mail=reply" class="flex flex-col gap-3">
+                        <input type="hidden" name="id" value="<?= $msg['id'] ?>">
+                        <textarea name="admin_reply" class="w-full p-3 rounded bg-white text-black text-sm h-24" placeholder="Votre réponse email..." required><?= htmlspecialchars($msg['admin_reply'] ?? '') ?></textarea>
+                        <div class="flex gap-2">
+                            <button type="submit" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded text-sm">Envoyer la réponse</button>
+                            <button type="button" onclick="toggleReplyForm(<?= $msg['id'] ?>)" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded text-sm">Annuler</button>
+                        </div>
+                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -49,28 +70,9 @@ if (!isset($mails) || !isset($users)) {
     </table>
 </div>
 
-<hr class="my-10 border-white">
-
-<div class="bg-[#355872] rounded-xl p-8 w-full max-w-2xl mx-auto">
-    <p class="text-white text-2xl mb-6">Envoyer un nouveau message</p>
-    <form method="POST" action="/~uapv2500805/admin/Controller/controller_mail.php?action_mail=store" class="flex flex-col gap-4">
-
-        <label class="text-white">Destinataire</label>
-        <select name="receiver_id" class="p-2 rounded bg-white text-black" required>
-            <option value="" disabled selected>-- Sélectionnez un joueur --</option>
-            <?php foreach ($users as $u): ?>
-                <option value="<?= $u['id'] ?>"><?= htmlspecialchars($u['username']) ?> (ID: <?= $u['id'] ?>)</option>
-            <?php endforeach; ?>
-        </select>
-
-        <label class="text-white">Sujet</label>
-        <input type="text" name="subject" placeholder="Ex: Problème de dépôt résolu" class="p-2 rounded bg-white text-black" required>
-
-        <label class="text-white">Message</label>
-        <textarea name="message" placeholder="Votre message pour ce joueur..." class="p-2 rounded bg-white text-black h-32" required></textarea>
-
-        <button type="submit" class="bg-[#1576e2] text-white font-bold py-3 mt-4 rounded hover:bg-blue-700">
-            Envoyer le message
-        </button>
-    </form>
-</div>
+<script>
+    function toggleReplyForm(id) {
+        const row = document.getElementById('reply-row-' + id);
+        row.classList.toggle('hidden');
+    }
+</script>

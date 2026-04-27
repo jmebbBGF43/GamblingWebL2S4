@@ -9,22 +9,35 @@ class MailManager {
         $this->db = \Model\ConnexionDB::getPDO();
     }
 
-    public function getAllMails() {
-        // Le JOIN permet de récupérer le 'username' de celui qui envoie et celui qui reçoit
-        $sql = "SELECT m.*, u1.username AS sender_name, u2.username AS receiver_name 
-                FROM mail m 
-                LEFT JOIN users u1 ON m.sender_id = u1.id 
-                LEFT JOIN users u2 ON m.receiver_id = u2.id 
-                ORDER BY m.id DESC";
+    // Récupère tous les messages
+    public function getAllMessages() {
+        $sql = "SELECT cm.*, u.username 
+                FROM contact_messages cm 
+                LEFT JOIN users u ON cm.user_id = u.id 
+                ORDER BY cm.created_at DESC";
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insertMail($sender_id, $receiver_id, $subject, $message) {
-        $sql = "INSERT INTO mail (sender_id, receiver_id, subject, message) VALUES (?, ?, ?, ?);";
-        $this->db->prepare($sql)->execute([$sender_id, $receiver_id, $subject, $message]);
+    // Récupère un message spécifique pour l'envoi de mail
+    public function getMessageById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM contact_messages WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function deleteMail($id) {
-        $this->db->prepare("DELETE FROM mail WHERE id = ?")->execute([$id]);
+    // Mise à jour du statut (Uniquement 'read' ou 'unread')
+    public function updateStatus($id, $status) {
+        $sql = "UPDATE contact_messages SET status = ? WHERE id = ?;";
+        $this->db->prepare($sql)->execute([$status, $id]);
+    }
+
+    // Sauvegarde la réponse et passe le message en "Lu"
+    public function saveReply($id, $reply_text) {
+        $sql = "UPDATE contact_messages SET admin_reply = ?, status = 'read' WHERE id = ?;";
+        $this->db->prepare($sql)->execute([$reply_text, $id]);
+    }
+
+    public function deleteMessage($id) {
+        $this->db->prepare("DELETE FROM contact_messages WHERE id = ?")->execute([$id]);
     }
 }
