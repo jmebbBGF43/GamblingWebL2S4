@@ -8,5 +8,5 @@ if (isset($_COOKIE['remember_user'])) {
     setcookie('remember_user', '', time() - 3600, '/');
 }
 
-header("Location: " . BASE_URL . "index.php");
+header("Location: " . BASE_URL . "home");
 exit();

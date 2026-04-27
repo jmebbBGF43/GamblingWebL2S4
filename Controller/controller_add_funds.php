@@ -5,7 +5,7 @@ require_once ROOT_DIR . "Model/Class/UserDB.php";
 
 use Model\Entity\UserDB;
 if (!isset($_SESSION['user_id'])) {
-    header("Location: " . BASE_URL . "Controller/controller_login.php");
+    header("Location: " . BASE_URL . "connexion");
     exit();
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,5 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['payment_error'] = "Le montant doit être supérieur à 0.";
     }
 }
-header("Location: " . BASE_URL . "Controller/controller_menu.php?user_pageID=payment");
+header("Location: " . BASE_URL . "paiment");;
 exit();

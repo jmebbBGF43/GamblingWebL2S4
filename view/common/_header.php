@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id'])) {
 <header class="h-20 flex justify-between px-8 bg-[#0f212e] border-b border-white/5">
     <div class="flex items-center">
         <div class="text-2xl font-black tracking-tighter text-white">
-            <a href="<?= BASE_URL ?>index.php">GAMBLING<span class="text-[#1576e2]">.IO</span></a>
+            <a href="<?= BASE_URL ?>home">GAMBLING<span class="text-[#1576e2]">.IO</span></a>
         </div>
     </div>
 
@@ -45,12 +45,12 @@ if (isset($_SESSION['user_id'])) {
                     <?php endif; ?>
 
                     <li>
-                        <a href="<?= BASE_URL ?>Controller/controller_menu.php?user_pageID=profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                        <a href="<?= BASE_URL ?>profile" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                             👤 Profil
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>Controller/controller_menu.php?user_pageID=payment" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
+                        <a href="<?= BASE_URL ?>paiement" class="hover:bg-white/10 hover:text-white transition-colors rounded py-3">
                             💳 Paiement
                         </a>
                     </li>
@@ -69,7 +69,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
 
         <?php else: ?>
-            <a href="<?= BASE_URL ?>Controller/controller_login.php" class="btn bg-[#1576e2] hover:bg-blue-600 text-white border-none rounded font-bold px-6">
+            <a href="<?= BASE_URL ?>connexion" class="btn bg-[#1576e2] hover:bg-blue-600 text-white border-none rounded font-bold px-6">
                 Se connecter
             </a>
         <?php endif; ?>

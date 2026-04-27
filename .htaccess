@@ -1,0 +1,45 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase /~uapv2500969/
+
+# -----------------------------------
+# PAGES D'AUTHENTIFICATION
+# -----------------------------------
+RewriteRule ^connexion/?$ Controller/controller_login.php [L,QSA]
+RewriteRule ^inscription/?$ Controller/controller_register.php [L,QSA]
+
+# -----------------------------------
+# PAGES DU MENU UTILISATEUR
+# -----------------------------------
+RewriteRule ^paiement/?$ Controller/controller_menu.php?user_pageID=payment [L,QSA]
+RewriteRule ^profile/?$ Controller/controller_menu.php?user_pageID=profile [L,QSA]
+RewriteRule ^parametres/?$ Controller/controller_menu.php?user_pageID=parameter [L,QSA]
+# Si tu as une page profil :
+# RewriteRule ^profil/?$ Controller/controller_menu.php?user_pageID=profile [L,QSA]
+
+# -----------------------------------
+# PAGES LÉGALES & SUPPORT
+# -----------------------------------
+RewriteRule ^support/?$ Controller/controller_legal.php?legalID=support [L,QSA]
+RewriteRule ^condition/?$ Controller/controller_legal.php?legalID=condition [L,QSA]
+RewriteRule ^confidentialite/?$ Controller/controller_legal.php?legalID=confidentialite [L,QSA]
+# Si tu as une page mentions légales :
+# RewriteRule ^mentions-legales/?$ Controller/controller_legal.php?page=legal [L,QSA]
+
+# -----------------------------------
+# PAGES DES JEUX (Règle dynamique)
+# -----------------------------------
+# Cette règle capture n'importe quel mot après "game/" et le passe dans la variable ?game=
+RewriteRule ^game/([a-zA-Z0-9_-]+)/?$ Controller/controller_game.php?game=$1 [L,QSA]
+
+# Si tu as une page qui liste tous les jeux (l'accueil des jeux) :
+# RewriteRule ^jeux/?$ Controller/controller_game.php [L,QSA]
+
+# -----------------------------------
+# PAGE D'ACCUEIL
+# -----------------------------------
+RewriteRule ^home/?$ index.php [L,QSA]
+
+# Optionnel : Rediriger l'accès direct à index.php vers /home
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.php\ HTTP/
+RewriteRule ^(.*)index\.php$ home [R=301,L]

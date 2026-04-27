@@ -6,7 +6,7 @@ require_once ROOT_DIR . "Model/Class/UserDB.php";
 use Model\Entity\UserDB;
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: " . BASE_URL . "Controller/controller_login.php");
+    header("Location: " . BASE_URL . "connexion");
     exit();
 }
 
@@ -20,7 +20,7 @@ if (in_array($user_pageID, $allowed_user_page)) {
 
     if (!$userData) {
         session_destroy();
-        header("Location: " . BASE_URL . "index.php");
+        header("Location: " . BASE_URL . "home");
         exit();
     }
 
@@ -50,6 +50,6 @@ if (in_array($user_pageID, $allowed_user_page)) {
     include ROOT_DIR . "view/layout_header.php";
 
 } else {
-    header("Location: " . BASE_URL . "index.php");
+    header("Location: " . BASE_URL . "home");
     exit();
 }

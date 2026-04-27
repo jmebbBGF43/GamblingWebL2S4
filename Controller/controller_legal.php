@@ -13,6 +13,6 @@ if (in_array($legalID, $allowed_legal)) {
     include ROOT_DIR . "view/layout_header.php";
 
 } else {
-    header("Location:" . BASE_URL. "index.php");
+    header("Location: " . BASE_URL . "home");
     exit();
 }

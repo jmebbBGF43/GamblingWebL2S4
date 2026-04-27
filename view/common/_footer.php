@@ -5,9 +5,9 @@
         </div>
 
         <div class="flex gap-6 text-gray-400 text-xs uppercase tracking-widest font-semibold">
-            <a href="Controller/controller_legal.php?legalID=condition" class="hover:text-white transition-colors">Conditions d'utilisation</a>
-            <a href="Controller/controller_legal.php?legalID=confidentialite" class="hover:text-white transition-colors">Confidentialité</a>
-            <a href="Controller/controller_legal.php?legalID=support" class="hover:text-white transition-colors">Support</a>
+            <a href="<?= BASE_URL ?>condition" class="hover:text-white transition-colors">Conditions d'utilisation</a>
+            <a href="<?= BASE_URL ?>confidentialite" class="hover:text-white transition-colors">Confidentialité</a>
+            <a href="<?= BASE_URL ?>support" class="hover:text-white transition-colors">Support</a>
         </div>
     </div>
 </footer>

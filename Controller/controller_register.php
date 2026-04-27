@@ -36,7 +36,7 @@ try {
         $userDB->insertUser($user);
 
         echo "<p class='text-white text-2xl font-bold mb-2 text-center mt-4 mb-4'>Compte créé !</p>";
-        header('Location: ../index.php');
+        header("Location: " . BASE_URL . "home");
         exit();
     }
 } catch (Exception $e) {

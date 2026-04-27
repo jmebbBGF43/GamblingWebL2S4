@@ -8,13 +8,13 @@ use Model\Entity\GameManager;
 
 $gameSlug = $_GET['game'] ?? '';
 if (empty($gameSlug)) {
-    header("Location: " . BASE_URL . "index.php");
+    header("Location: " . BASE_URL . "home");
     exit();
 }
 $gameManager = new GameManager();
 $gameData = $gameManager->getGameDataSlug($gameSlug);
 if (!$gameData || !$gameData['is_active']) {
-    header("Location: " . BASE_URL . "index.php");
+    header("Location: " . BASE_URL . "home");
     exit();
 }
 ob_start();

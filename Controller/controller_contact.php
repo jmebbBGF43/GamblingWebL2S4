@@ -6,7 +6,7 @@ require_once ROOT_DIR . "Model/Class/ContactDB.php";
 use Model\Entity\ContactDB;
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: " . BASE_URL . "Controller/controller_login.php");
+    header("Location: " . BASE_URL . "connexion");
     exit();
 }
 
@@ -44,6 +44,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$retour = $_SERVER['HTTP_REFERER'] ?? BASE_URL . 'index.php';
-header("Location: " . $retour);
+header('Location: ' . BASE_URL . 'home');
 exit();

@@ -6,7 +6,7 @@ require_once ROOT_DIR . "Model/Class/UserDB.php";
 use Model\Entity\UserDB;
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: " . BASE_URL . "index.php");
+    header("Location: " . BASE_URL . "home");
     exit();
 }
 
@@ -41,5 +41,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-header("Location: " . BASE_URL . "Controller/controller_menu.php?user_pageID=parameter");
+header("Location: " . BASE_URL . "parametres");
 exit();

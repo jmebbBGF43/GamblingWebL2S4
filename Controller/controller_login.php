@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($remember) {
             setcookie('remember_user', $userData['id'], time() + (86400 * 30), "/");
         }
-        header('Location: ../index.php');
+        header("Location: " . BASE_URL . "home");
         exit();
 
     } catch (\Exception $e) {
