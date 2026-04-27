@@ -51,7 +51,7 @@
                                 <div class="flex items-center gap-4">
                                     <h3 class="text-xl font-black text-blue-400"><?= htmlspecialchars($case['name']) ?></h3>
 
-                                    <a href="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=delete_case&id=<?= $game['id'] ?>&case_id=<?= $case['id'] ?>"
+                                    <a href="<?= BASE_URL ?>admin/jeux/delete_case/<?= $game['id'] ?>/<?= $case['id'] ?>?csrf_token=<?= $_SESSION['csrf_token'] ?>"
                                        onclick="return confirm('Supprimer définitivement la caisse <?= htmlspecialchars(addslashes($case['name'])) ?> ?');"
                                        class="bg-red-600/80 hover:bg-red-500 text-white font-bold py-1 px-3 rounded text-xs transition-colors border border-red-500/50">
                                         🗑️ Supprimer
@@ -100,7 +100,7 @@
                 <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded transition-all text-xl shadow-lg uppercase">
                     💾 Sauvegarder les modifications
                 </button>
-                <a href="<?= BASE_URL ?>admin/Controller/controller_admingames.php" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-4 px-8 rounded text-center transition-all flex items-center">
+                <a href="<?= BASE_URL ?>admin/jeux" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-4 px-8 rounded text-center transition-all flex items-center">
                     ANNULER
                 </a>
             </div>

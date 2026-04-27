@@ -30,12 +30,12 @@ if ($totalGames > 0) {
                 <td class="px-6 py-4 font-bold text-lg text-blue-300"><?= htmlspecialchars($game['name']) ?></td>
                 <td class="px-6 py-4 font-mono text-xs"><?= htmlspecialchars($game['slug']) ?></td>
                 <td class="px-6 py-4 text-center">
-                    <a href="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=toggle_status&id=<?= $game['id'] ?>" class="<?= $game['is_active'] ? 'bg-green-500/20 text-green-400 border-green-500/50 hover:bg-green-500/40' : 'bg-red-500/20 text-red-400 border-red-500/50 hover:bg-red-500/40' ?> border px-3 py-1 rounded text-xs font-bold uppercase inline-block transition-colors">
+                    <a href="<?= BASE_URL ?>admin/jeux/toggle_status/<?= $game['id'] ?>" class="<?= $game['is_active'] ? 'bg-green-500/20 text-green-400 border-green-500/50 hover:bg-green-500/40' : 'bg-red-500/20 text-red-400 border-red-500/50 hover:bg-red-500/40' ?> border px-3 py-1 rounded text-xs font-bold uppercase inline-block transition-colors">
                         <?= $game['is_active'] ? 'Actif' : 'Inactif' ?>
                     </a>
                 </td>
                 <td class="px-6 py-4">
-                    <a href="<?= BASE_URL ?>admin/Controller/controller_admingames.php?action_game=proba&id=<?= $game['id'] ?>" class="bg-[#1576e2] hover:bg-blue-500 text-white font-bold py-2 px-4 rounded transition-colors">
+                    <a href="<?= BASE_URL ?>admin/jeux/proba/<?= $game['id'] ?>" class="bg-[#1576e2] hover:bg-blue-500 text-white font-bold py-2 px-4 rounded transition-colors">
                         ⚙️ Modifier Jeu
                     </a>
                 </td>

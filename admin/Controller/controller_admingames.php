@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'update_proba') {
 
 // ACTION : SUPPRIMER UNE CAISSE
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $action_game === 'delete_case') {
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    if (!isset($_GET['csrf_token']) || $_GET['csrf_token'] !== $_SESSION['csrf_token']) {
         die("Erreur de sécurité CSRF.");
     }
     $id = (int)$_GET['id']; // L'ID du jeu (Case Opening)

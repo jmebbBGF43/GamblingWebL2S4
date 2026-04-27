@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel</title>
+    <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?? '' ?>">
     <script src="https://cdn.tailwindcss.com"></script>
     <base href="https://pedago.univ-avignon.fr/~uapv2500969/">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" />

@@ -43,3 +43,36 @@ RewriteRule ^home/?$ index.php [L,QSA]
 # Optionnel : Rediriger l'accès direct à index.php vers /home
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.php\ HTTP/
 RewriteRule ^(.*)index\.php$ home [R=301,L]
+
+# -----------------------------------
+# PAGES DU BACK-OFFICE (ADMIN)
+# -----------------------------------
+RewriteRule ^admin/?$ admin.php [L,QSA]
+RewriteRule ^admin/dashboard/?$ admin.php [L,QSA]
+
+# --- Gestion des Jeux ---
+# URL type : /admin/jeux/delete_case/1/box_123
+RewriteRule ^admin/jeux/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_admingames.php?action_game=$1&id=$2&case_id=$3 [L,QSA]
+# URL type : /admin/jeux/proba/1
+RewriteRule ^admin/jeux/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_admingames.php?action_game=$1&id=$2 [L,QSA]
+# URL type : /admin/jeux/add_case
+RewriteRule ^admin/jeux/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_admingames.php?action_game=$1 [L,QSA]
+# URL type : /admin/jeux
+RewriteRule ^admin/jeux/?$ admin/Controller/controller_admingames.php [L,QSA]
+
+# --- Gestion Utilisateurs ---
+RewriteRule ^admin/utilisateurs/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_adminusers.php?action_user=$1&id=$2 [L,QSA]
+RewriteRule ^admin/utilisateurs/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_adminusers.php?action_user=$1 [L,QSA]
+RewriteRule ^admin/utilisateurs/?$ admin/Controller/controller_adminusers.php [L,QSA]
+
+# --- Gestion de la FAQ ---
+RewriteRule ^admin/faq/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_adminfaq.php?action_faq=$1&id=$2 [L,QSA]
+RewriteRule ^admin/faq/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_adminfaq.php?action_faq=$1 [L,QSA]
+RewriteRule ^admin/faq/?$ admin/Controller/controller_adminfaq.php [L,QSA]
+
+# --- Gestion des Mails ---
+# URL type : /admin/mails/status/1/read
+RewriteRule ^admin/mails/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_mail.php?action_mail=$1&id=$2&status=$3 [L,QSA]
+RewriteRule ^admin/mails/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_mail.php?action_mail=$1&id=$2 [L,QSA]
+RewriteRule ^admin/mails/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_mail.php?action_mail=$1 [L,QSA]
+RewriteRule ^admin/mails/?$ admin/Controller/controller_mail.php [L,QSA]
