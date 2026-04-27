@@ -1,5 +1,5 @@
 <?php
-// Calcul des statistiques
+
 $totalUsers = count($users ?? []);
 $totalCredits = 0;
 $bannedCount = 0;

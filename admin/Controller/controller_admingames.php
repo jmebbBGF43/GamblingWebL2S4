@@ -6,18 +6,14 @@ require_once ROOT_DIR . "Model/Class/GameManager.php";
 
 $gameManager = new \Model\Entity\GameManager();
 $action_game = $_GET['action_game'] ?? '';
-// ACTION : BASCULER LE STATUT ACTIF / INACTIF D'UN JEU
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $action_game === 'toggle_status') {
     if (isset($_GET['id'])) {
         $id = (int)$_GET['id'];
-        // Appel de la méthode pour inverser l'état
         $gameManager->toggleGameStatus($id);
     }
-
     header("Location: " . BASE_URL . "admin/jeux");
     exit();
 }
-// ACTION : MISE À JOUR DES CAISSES EXISTANTES
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'update_proba') {
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         die("Erreur de sécurité CSRF.");
@@ -25,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'update_proba') {
     $id = (int)$_POST['id'];
     $slug = $_POST['slug'];
     $probs = [];
-
     if ($slug === 'pileOuFace') {
         $probs = [
             'edge' => (float)$_POST['edge'],
@@ -55,54 +50,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'update_proba') {
     exit();
 }
 
-
-// ACTION : SUPPRIMER UNE CAISSE
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $action_game === 'delete_case') {
     if (!isset($_GET['csrf_token']) || $_GET['csrf_token'] !== $_SESSION['csrf_token']) {
         die("Erreur de sécurité CSRF.");
     }
-    $id = (int)$_GET['id']; // L'ID du jeu (Case Opening)
-    $case_id = $_GET['case_id']; // L'ID spécifique de la caisse dans le JSON
-
-    // 1. On récupère les probabilités actuelles
+    $id = (int)$_GET['id'];
+    $case_id = $_GET['case_id'];
     $game = $gameManager->getGameDataId($id);
     $currentProbs = is_string($game['probabilities']) ? json_decode($game['probabilities'], true) : $game['probabilities'];
 
     if (isset($currentProbs['cases'])) {
-        // 2. On filtre le tableau pour garder toutes les caisses SAUF celle qu'on veut supprimer
         $currentProbs['cases'] = array_filter($currentProbs['cases'], function($case) use ($case_id) {
             return $case['id'] !== $case_id;
         });
-
-        // On réindexe le tableau (très important en PHP pour que ça reste un tableau JSON propre et non un objet)
         $currentProbs['cases'] = array_values($currentProbs['cases']);
-
-        // 3. On sauvegarde la modification
         $gameManager->setProbs($id, $currentProbs);
     }
-
-    // 4. On redirige vers la page de modification
     header("Location: " . BASE_URL . "admin/jeux/proba/" . $id);
     exit();
 }
 
-
-// ACTION : AJOUTER UNE NOUVELLE CAISSE
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'add_case') {
-    // 1. Sécurité CSRF
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         die("Erreur de sécurité CSRF.");
     }
-
     $id = (int)$_POST['game_id'];
     $newName = trim($_POST['new_case_name']);
-
-    // On récupère les données actuelles
     $game = $gameManager->getGameDataId($id);
     $currentProbs = is_string($game['probabilities']) ? json_decode($game['probabilities'], true) : $game['probabilities'];
     if (!isset($currentProbs['cases'])) $currentProbs['cases'] = [];
-
-    // 2. Vérification du nom en doublon
     foreach ($currentProbs['cases'] as $c) {
         if (strtolower($c['name']) === strtolower($newName)) {
             $_SESSION['admin_error'] = "Une caisse nommée '$newName' existe déjà !";
@@ -110,8 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'add_case') {
             exit();
         }
     }
-
-    // 3. Vérification des probabilités (exactement 100%)
     $totalProb = 0;
     foreach (['gris', 'bleu', 'violet', 'rouge', 'gold'] as $rarity) {
         $totalProb += (int)$_POST['new_prob'][$rarity];
@@ -122,30 +96,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action_game === 'add_case') {
         header("Location: " . BASE_URL . "admin/jeux/proba/" . $id);
         exit();
     }
-
-    // 4. On prépare et ajoute la nouvelle caisse
     $newCase = [
         'id' => strtolower(str_replace(' ', '_', $newName)) . "_" . time(),
         'name' => $newName,
         'price' => (float)$_POST['new_case_price'],
         'items' => []
     ];
-
     foreach (['gris', 'bleu', 'violet', 'rouge', 'gold'] as $rarity) {
         $newCase['items'][$rarity] = [
             'mult' => (float)$_POST['new_mult'][$rarity],
             'prob' => (int)$_POST['new_prob'][$rarity]
         ];
     }
-
     $currentProbs['cases'][] = $newCase;
     $gameManager->setProbs($id, $currentProbs);
-
     $_SESSION['admin_success'] = "La caisse '$newName' a bien été ajoutée !";
     header("Location: " . BASE_URL . "admin/jeux/proba/" . $id);
     exit();
 }
-
 ob_start();
 if ($action_game === 'proba') {
     $game = $gameManager->getGameDataId($_GET['id']);

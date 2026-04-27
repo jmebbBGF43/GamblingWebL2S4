@@ -8,15 +8,10 @@ require_once ROOT_DIR . "admin/Model/Class/FaqManager.php";
 
 $faqManager = new \Model\Entity\FaqManager();
 $action = $_GET['action_faq'] ?? '';
-
-// Traitement des actions
-// Traitement des actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Vérification CSRF
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         die("Erreur de sécurité : Jeton CSRF invalide.");
     }
-
     if ($action === 'store') {
         $faqManager->insertFaq($_POST['question'], $_POST['answer']);
         header("Location: " . BASE_URL . "admin/faq");
@@ -35,11 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: " . BASE_URL . "admin/faq");
     exit();
 }
-
 ob_start();
 if ($action === 'edit' && isset($_GET['id'])) {
     $f = $faqManager->getFaqById($_GET['id']);
-    include '../view/pages/form_faq.php'; // On peut créer un petit form à part ou l'intégrer
+    include '../view/pages/form_faq.php';
 } else {
     $faqs = $faqManager->getAllFaqs();
     include '../view/pages/adminfaq.php';

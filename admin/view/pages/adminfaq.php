@@ -1,5 +1,4 @@
 <?php
-// On s'assure que les données sont chargées même si tu passes par admin.php
 if (!isset($faqs)) {
     require_once __DIR__ . "/../../../configuration/config.php";
     require_once ROOT_DIR . "Model/ConnexionDB.php";
