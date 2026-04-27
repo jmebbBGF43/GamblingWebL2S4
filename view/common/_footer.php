@@ -8,6 +8,7 @@
             <a href="<?= BASE_URL ?>condition" class="hover:text-white transition-colors">Conditions d'utilisation</a>
             <a href="<?= BASE_URL ?>confidentialite" class="hover:text-white transition-colors">Confidentialité</a>
             <a href="<?= BASE_URL ?>support" class="hover:text-white transition-colors">Support</a>
+            <a href="<?= BASE_URL ?>plan-du-site" class="hover:text-white transition-colors">Plan du site</a>
         </div>
     </div>
 </footer>

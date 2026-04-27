@@ -47,8 +47,8 @@ RewriteRule ^(.*)index\.php$ home [R=301,L]
 # -----------------------------------
 # PAGES DU BACK-OFFICE (ADMIN)
 # -----------------------------------
-RewriteRule ^admin/?$ admin.php [L,QSA]
-RewriteRule ^admin/dashboard/?$ admin.php [L,QSA]
+RewriteRule ^admin/?$ admin/admin.php [L,QSA]
+RewriteRule ^admin/dashboard/?$ admin/admin.php [L,QSA]
 
 # --- Gestion des Jeux ---
 # URL type : /admin/jeux/delete_case/1/box_123
@@ -76,3 +76,8 @@ RewriteRule ^admin/mails/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ a
 RewriteRule ^admin/mails/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_mail.php?action_mail=$1&id=$2 [L,QSA]
 RewriteRule ^admin/mails/([a-zA-Z0-9_-]+)/?$ admin/Controller/controller_mail.php?action_mail=$1 [L,QSA]
 RewriteRule ^admin/mails/?$ admin/Controller/controller_mail.php [L,QSA]
+
+RewriteRule ^plan-du-site/?$ Controller/controller_sitemap.php [L,QSA]
+
+# Connexion Administrateur
+RewriteRule ^admin/connexion/?$ admin/Controller/controller_login.php [L,QSA]

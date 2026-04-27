@@ -37,7 +37,7 @@ if (isset($_SESSION['user_id'])) {
 
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <li>
-                            <a href="<?= BASE_URL ?>admin/admin.php" class="text-yellow-400 hover:bg-yellow-400/10 hover:text-yellow-300 transition-colors rounded py-3 font-bold">
+                            <a href="<?= BASE_URL ?>admin" class="text-yellow-400 hover:bg-yellow-400/10 hover:text-yellow-300 transition-colors rounded py-3 font-bold">
                                 👑 Panel Admin
                             </a>
                         </li>

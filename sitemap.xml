@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/home</loc>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/connexion</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/inscription</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/game/caseOpening</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/game/pileOuFace</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/paiement</loc>
+        <priority>0.70</priority>
+    </url>
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/parametres</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://pedago.univ-avignon.fr/~uapv2500969/support</loc>
+        <priority>0.50</priority>
+    </url>
+</urlset>

@@ -2,7 +2,7 @@
 
 use Model\Entity\User;
 
-require_once "../../configuration/config.php";
+require_once __DIR__ . "/../../configuration/config.php";
 require_once ROOT_DIR . "Model/ConnexionDB.php";
 require_once ROOT_DIR . "Model/Class/User.php";
 require_once ROOT_DIR . "Model/Class/UserDB.php";

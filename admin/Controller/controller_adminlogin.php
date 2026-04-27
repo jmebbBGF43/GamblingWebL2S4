@@ -4,6 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header('Location: ' . BASE_URL . 'connexion');
+    header('Location: ' . BASE_URL . 'admin/connexion');
     exit();
 }

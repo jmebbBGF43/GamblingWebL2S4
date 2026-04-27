@@ -2,11 +2,14 @@
 require_once "../configuration/config.php";
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: " . BASE_URL . "index.php");
+    header("Location: " . BASE_URL . "admin/connexion");
     exit();
 }
-
 $page = $_GET['page'] ?? 'home';
+if ($page === 'home') {
+    header("Location: " . BASE_URL . "admin/utilisateurs");
+    exit();
+}
 
 ob_start();
 

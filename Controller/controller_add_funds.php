@@ -32,5 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['payment_error'] = "Le montant doit être supérieur à 0.";
     }
 }
-header("Location: " . BASE_URL . "paiment");;
+header("Location: " . BASE_URL . "paiement");;
 exit();
